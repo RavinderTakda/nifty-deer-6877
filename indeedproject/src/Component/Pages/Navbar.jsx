@@ -1,5 +1,8 @@
 import { Box,Flex,Spacer,Text,Divider } from '@chakra-ui/react'
 import React from 'react'
+import { BsFillChatLeftTextFill } from "react-icons/bs";
+import { FaBell } from "react-icons/fa";
+import {CgProfile} from 'react-icons/cg'
 
 export const Navbar = () => {
   return (
@@ -29,13 +32,13 @@ export const Navbar = () => {
            </Box>
            <Spacer/>
            <Box  py={4} >
-            Messages
+             <BsFillChatLeftTextFill/>
            </Box>
            <Box  py={4}>
-            Alert
+            <FaBell/>
            </Box>
            <Box  py={4}>
-            Profile
+            <CgProfile/>
            </Box>
            <Divider orientation='vertical' h={15}/>
            <Box  py={4}>
