@@ -18,7 +18,7 @@ function App() {
      
         <MainCom />
      
-
+      
     </div>
   );
 }
