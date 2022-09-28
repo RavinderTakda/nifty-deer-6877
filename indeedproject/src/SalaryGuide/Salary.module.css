@@ -1,0 +1,356 @@
+/* Styling of PageRating.jsx */
+.ratingContainer {
+  border: 1px solid rgb(230, 231, 230);
+  border-radius: 10px;
+  padding: 30px;
+  position: relative;
+  height: auto;
+}
+.grid{
+   border: 1px solid red;
+}
+
+.ratingContainer button {
+  margin-top: 20px;
+  background-color: #085ff7;
+  color: white;
+  width: 240px;
+  height: 40px;
+  border-radius: 10px;
+  font-weight: bold;
+  outline: none;
+  border: none;
+}
+.flexBox {
+  display: flex;
+  gap: 20px;
+}
+
+.flexBox p {
+  margin-top: 30px;
+  color: #085ff7;
+  text-decoration: underline;
+}
+
+/* Styling of Top Paying Jobs Page - TPJobs.jsx */
+.compContainer span {
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: absolute;
+  right: 15px;
+  text-decoration: underline;
+}
+
+/* Styling of Top Paying Companies Page - TPCompany.jsx */
+.companyRoute {
+  margin-top: 2vh;
+  width: 31.5vw;
+  color: black;
+}
+
+.companyRoute:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+.compCard {
+  display: flex;
+  gap: 2vw;
+  margin: 0px 10px;
+  margin-top: 20px;
+  transition: 0.3s ease-in-out;
+}
+.compCard h4 {
+  margin-top: 10px;
+}
+.compCard:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 1px 0px rgb(182, 182, 182);
+  transition: 0.5s ease-in-out;
+}
+.compCard h3 + p {
+  margin-top: 2vh;
+}
+
+.compCard img {
+  width: 80px;
+  border: 1px solid #ececec;
+}
+
+.starRating {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.starRating p {
+  font-size: 12px;
+  color: grey;
+}
+
+/* Styling of JobByCategory.jsx */
+.jobSalary {
+  width: 70%;
+  margin-top: 5vh;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.categoryJobs {
+  position: relative;
+  top: 10%;
+  margin-top: -150px;
+}
+
+/* Styling of EmojisRating.jsx */
+.emojiContainer {
+  margin-top: 120px;
+}
+
+.findEarning {
+  width: 100%;
+  padding: 2.5vw;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid rgb(221, 221, 221);
+  margin: 10vh 0vw;
+  justify-content: center;
+  height: auto;
+}
+.findEarning div {
+  margin: auto;
+}
+.findEarning img {
+  right: 30px;
+  top: 30px;
+  margin-right: 2.5vw;
+}
+
+.findEarning img:hover {
+  cursor: pointer;
+}
+
+.feedback {
+  margin-top: 5vh;
+  padding: 20px;
+  width: 100%;
+  font-size: 1rem;
+  height: 25vh;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid rgb(224, 224, 224);
+}
+
+.feedbackSubmit {
+  background: #085ff7;
+  color: white;
+  outline: none;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  border: none;
+  width: 16vw;
+  height: 6vh;
+  border-radius: 50px;
+}
+
+/* Styling of CompanyInfo.jsx */
+.companyInfo {
+  margin-top: 10%;
+  height: 17vh;
+  display: flex;
+  width: 70vw;
+  margin-top: -3px;
+}
+
+.companyInfo > div:nth-child(3) {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.companyInfo > div:nth-child(2) {
+  flex-grow: 2;
+  margin: 1vw;
+}
+
+.companyInfo h4 {
+  position: absolute;
+  left: 23%;
+}
+
+.companyInfo p {
+  font-size: 0.8rem;
+  color: rgb(112, 112, 112);
+}
+
+.poster {
+  width: 70vw;
+  height: 20vh;
+  text-align: center;
+  margin: auto;
+}
+
+.poster > img {
+  width: 100%;
+  background-size: cover;
+}
+.logo {
+  width: 10%;
+  height: 15%;
+}
+.logo img {
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 1px rgb(0, 0, 0);
+  margin-top: -30%;
+  width: 100%;
+}
+.rating {
+  display: flex;
+  margin-top: 10px;
+}
+
+.rating > div {
+  font-weight: bold;
+  margin: 0px 5px 0px 4px;
+}
+
+.rating p {
+  margin-left: 10px;
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.salaryInfo {
+  position: relative;
+}
+
+.salaryInfo > div {
+  gap: 10%;
+  display: flex;
+  text-align: left;
+}
+
+.salaryInfo div > div {
+  flex-basis: 10vw;
+}
+.salaryInfo div div:nth-child(1) {
+  flex-grow: 1;
+}
+.salaryInfo button {
+  width: 17vw;
+  height: 7vh;
+  font-size: 1rem;
+  font-weight: bold;
+  background: white;
+  border-radius: 30px;
+  color: #085ff7;
+  border: 2px solid #085ff7;
+}
+.salaryInfo select {
+  margin-top: 3vh;
+  width: 300px;
+  padding: 0.7vw 1.2vw;
+  font-size: 1rem;
+}
+.salaryInfo select:nth-child(2) {
+  margin-left: 40px;
+}
+
+.salaryInfo select:hover {
+  outline: 1px solid #196dff;
+}
+
+.faq div {
+  color: black;
+  margin-bottom: 1vh;
+}
+.faq p {
+  margin-bottom: 3vh;
+}
+
+/* Common Styling */
+
+.tpJobs,
+.tpComp,
+.ratingContainer {
+  position: relative;
+  top: 6vh;
+}
+.tpComp,
+.tpJobs,
+.ratingContainer,
+.emojiContainer {
+  width: 95%;
+  margin: auto;
+  /* border: 1px solid red; */
+  margin-top: 1%;
+}
+
+.tpJobs select,
+.tpComp select {
+  margin-top: 1.4vw;
+  margin-bottom: 2vw;
+  outline: none;
+  width: 25%;
+  padding: 0vw 1vw;
+  font-size: 0.8rem;
+  height: 6vh;
+  border-radius: 20px;
+}
+
+.jobsContainer,
+.compContainer {
+  display: flex;
+ /* border: 1px solid red; */
+  gap: 30px;
+  margin-left: 30px;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 990px) {
+  .findEarning div {
+    text-align: center;
+  }
+  .findEarning img {
+    margin-top: 30px;
+    width: 40px;
+  }
+  .feedbackSubmit {
+    width: 100%;
+  }
+  .tpJobs h1,
+  .tpComp h1,
+  .ratingContainer h1,
+  .emojiContainer h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .tpJobs select,
+  .tpComp select {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .tpJobs,
+  .tpComp,
+  .ratingContainer .emojiContainer {
+    top: 12vh;
+  }
+  .tpJobs h1,
+  .tpComp h1,
+  .ratingContainer h1,
+  .emojiContainer h2 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+}
