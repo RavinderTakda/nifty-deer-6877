@@ -45,6 +45,7 @@ const TPJobs = () => {
   const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [size, setSize] =useState('md')
+  
   useEffect(() => {
     dispatch(getTopPayingJobs());
   }, [dispatch]);
