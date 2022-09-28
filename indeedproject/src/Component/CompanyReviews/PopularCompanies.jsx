@@ -10,7 +10,7 @@ const PopularCompanies = () => {
   const [query, setQuery] = useState("");
   const isSearching = useSelector((state) => state.companies.isSearching);
   const dispatch = useDispatch();
-  //const history = useHistory();
+  
 
   useEffect(() => {
     axios
