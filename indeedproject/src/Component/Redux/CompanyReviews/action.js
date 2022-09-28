@@ -4,6 +4,7 @@ import {
   FETCH_COMPANY_FAILURE,
   FETCH_COMPANY_DETAILS,
 } from "../actionTypes";
+// import * as types from './actionTypes'
 import axios from "axios";
 
 const fetchRequest = (payload) => {
@@ -56,8 +57,23 @@ export const getCompanyReviews = (payload) => (dispatch) => {
   axios
     .get(`https://indeed-mock-server.herokuapp.com/companies?id=${payload}`)
     .then((res) => {
-      dispatch(fetchCompanyDetails(res.data[0]));
+      dispatch(fetchCompanyDetails(res.data));
     })
-    .then(`https://indeed-mock-server.herokuapp.com/companies?id=${payload}`)
+    // .then(`https://indeed-mock-server.herokuapp.com/companies?id=${payload}`)
     .catch((err) => console.log(err));
 };
+
+
+
+
+
+
+
+// const getCompanyReviews=(params)=>(dispatch)=>{
+//   dispatch({type:types.FETCH_COMPANY_REQUEST})
+//   return axios.get("https://indeed-mock-server.herokuapp.com/companies",params)
+//   .then((r)=>{dispatch({type:types.FETCH_COMPANY_SUCCESS,payload:r.data})})
+//   .catch((e)=>{dispatch({type:types.FETCH_COMPANY_FAILURE})})
+// }
+
+// export {getCompanyReviews};

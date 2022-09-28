@@ -1,4 +1,4 @@
-import { Box,Flex,Spacer,Text,Divider } from '@chakra-ui/react'
+import { Box,Flex,Spacer,Text,Divider,Stack } from '@chakra-ui/react'
 import React from 'react'
 import { BsFillChatLeftTextFill } from "react-icons/bs";
 import { FaBell } from "react-icons/fa";
@@ -6,6 +6,7 @@ import {CgProfile} from 'react-icons/cg'
 
 export const Navbar = () => {
   return (
+    <>
     <div>
         <Box m={5} p={1}>
          <Stack>
@@ -53,8 +54,9 @@ export const Navbar = () => {
            </Box>
          </Flex>
          <Divider/>
-
+</Box>
         </Box>
     </div>
-  )
+    </>
+    )
 }

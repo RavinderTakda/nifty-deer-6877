@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+
 import { Box, Flex, SimpleGrid, Text, Image } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
+// import { getCompanyReviews } from "../Redux/CompanyReviews/action";
 
 const PopularCompanies = () => {
-  const [companies, setCompanies] = useState([]);
+   const [companies, setCompanies] = useState([]);
   const [query, setQuery] = useState("");
-  const isSearching = useSelector((state) => state.companies.isSearching);
+ // const isSearching = useSelector((state) => state.companies.isSearching);
   const dispatch = useDispatch();
   
 
+
+//   const shoesdata=useSelector((state)=>state.CompanyReviews.companies)
+//   const dispatch=useDispatch()
+
+//   useEffect(()=>{
+//     dispatch(getCompanyReviews())
+// },[dispatch])
+// console.log(shoesdata)
   useEffect(() => {
     axios
       .get("https://indeed-mock-server.herokuapp.com/companies")

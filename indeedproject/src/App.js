@@ -15,10 +15,7 @@ import { MainCom } from "./Component/Pages/MainCom";
 function App() {
   return (
     <div>
-     
-        <MainCom />
-     
-
+      <MainCom />
     </div>
   );
 }

@@ -6,10 +6,12 @@ import {
 } from "./actionTypes";
 
 const initState = {
+  // companies :[],
   isSearching: false,
   isLoading: true,
   error: false,
   data: [],
+
   currentCompany: [],
 };
 
