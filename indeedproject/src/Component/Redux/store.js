@@ -8,7 +8,7 @@ import  {topPayingJobsReducer} from "../Redux/Salaryreducer/reducer"
 import { CompanyReducer } from "./CompanyReviews/reducer";
 import { topPayingCompReducer } from "./TopCompanyreducer/reducer";
 
-const rootReducer = combineReducers({ companies: CompanyReducer,
+const rootReducer = combineReducers({ CompanyReducer: CompanyReducer,
   topPayingJobsReducer:topPayingJobsReducer,
   topPayingComp:topPayingCompReducer
 });

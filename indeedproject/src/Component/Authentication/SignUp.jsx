@@ -15,11 +15,10 @@ import { StarIcon } from "@chakra-ui/icons";
 import { ImArrowRight2 } from "react-icons/im";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook, BsApple } from "react-icons/bs";
-// import { auth, signInWithGoogle } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 import {createUserWithEmailAndPassword} from "firebase/auth"
-import {auth,signInWithGoogle} from "../../Firebase"
-import {GoogleAuthProvider,signInWithPopup} from "firebase/auth"
+import {auth} from "../../Firebase"
+// import {GoogleAuthProvider,signInWithPopup} from "firebase/auth"
 
 
 
@@ -52,21 +51,21 @@ export const SignUp = () => {
         // console.log(err)
     })
   };
-  const provider = new GoogleAuthProvider();
-     const signInWithGoogle=()=>{
-    signInWithPopup(auth,provider)
-    .then((res)=>{
-        console.log(res.data)
-        const email = res.user.email;
+//   const provider = new GoogleAuthProvider();
+//      const signInWithGoogle=()=>{
+//     signInWithPopup(auth,provider)
+//     .then((res)=>{
+//         console.log(res.data)
+//         const email = res.user.email;
         
-        localStorage.setItem("email", email)
+//         localStorage.setItem("email", email)
 
-    }).catch((err)=>{
-        console.log(err)
-    })
+//     }).catch((err)=>{
+//         console.log(err)
+//     })
     
     
-}
+// }
 
   return (
     <>
@@ -102,7 +101,7 @@ export const SignUp = () => {
             variant={"outline"}
             justifyContent="space-between"
             rightIcon={<div />}
-            onClick={signInWithGoogle}
+            // onClick={signInWithGoogle}
             navigate="/login"
           >
             Continue with Google

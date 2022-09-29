@@ -15,7 +15,7 @@ import {
   import { ImArrowRight2 } from "react-icons/im";
   import { FcGoogle } from "react-icons/fc";
   import { BsFacebook, BsApple } from "react-icons/bs";
-  // import { auth, signInWithGoogle } from "../../Firebase";
+  // import {signInWithGoogle } from "../../Firebase";
   import { useNavigate } from "react-router-dom";
   import {signInWithEmailAndPassword} from "firebase/auth"
   import {auth} from "../../Firebase"
