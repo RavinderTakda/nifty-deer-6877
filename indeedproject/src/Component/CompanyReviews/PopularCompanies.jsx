@@ -1,36 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-
+import { Link } from "react-router-dom";
 import { Box, Flex, SimpleGrid, Text, Image } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
-// import { getCompanyReviews } from "../Redux/CompanyReviews/action";
+import { getCompanyReviews } from "../Redux/CompanyReviews/action";
 
 const PopularCompanies = () => {
-   const [companies, setCompanies] = useState([]);
-  const [query, setQuery] = useState("");
- // const isSearching = useSelector((state) => state.companies.isSearching);
+  const companies = useSelector((state) => state.CompanyReducer.company);
   const dispatch = useDispatch();
-  
 
-
-//   const shoesdata=useSelector((state)=>state.CompanyReviews.companies)
-//   const dispatch=useDispatch()
-
-//   useEffect(()=>{
-//     dispatch(getCompanyReviews())
-// },[dispatch])
-// console.log(shoesdata)
   useEffect(() => {
-    axios
-      .get("https://indeed-mock-server.herokuapp.com/companies")
-      .then((res) => {
-        setCompanies(res.data);
-        console.log(res.data);
-      })
-
-      .catch((err) => console.log(err));
-  }, []);
+    dispatch(getCompanyReviews());
+  }, [dispatch]);
+  console.log(companies);
 
   return (
     <Box w="60%" m="auto" mt="10" h="500">
@@ -40,7 +22,7 @@ const PopularCompanies = () => {
       <SimpleGrid columns={[1, 2, 3]} spacing="40px">
         {companies.map((item) => {
           return (
-            <Box height="100px" key={item.id}>
+            <Box height="100px" key={item.id} border="1px solid red">
               <Box>
                 <Box height="70%" w="100%">
                   <Flex>
@@ -56,7 +38,9 @@ const PopularCompanies = () => {
                     </Box>
                     <Box ml="5">
                       <Text fontSize={18} fontWeight="bold">
-                        {item.company}
+                        <Link to={"/companyreview/${item.id}"}>
+                          {item.company}
+                        </Link>
                       </Text>
 
                       <Box display="flex" mt="2" alignItems="center">

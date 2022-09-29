@@ -1,51 +1,35 @@
 import {
   FETCH_COMPANY_REQUEST,
   FETCH_COMPANY_SUCCESS,
-  FETCH_COMPANY_FAILURE,
   FETCH_COMPANY_DETAILS,
+  FETCH_COMPANY_FAILURE,
 } from "./actionTypes";
 
 const initState = {
-  // companies :[],
-  isSearching: false,
   isLoading: true,
-  error: false,
-  data: [],
-
-  currentCompany: [],
+  isError: false,
+  company: [],
 };
 
-const CompanyReducer = (state = initState, { type, payload }) => {
+export const CompanyReducer = (state = initState, { type, payload }) => {
   switch (type) {
     case FETCH_COMPANY_REQUEST:
       return {
         ...state,
-        isSearching: true,
         isLoading: true,
-        error: false,
       };
     case FETCH_COMPANY_SUCCESS:
       return {
         ...state,
-        isSearching: false,
+        company: payload,
         isLoading: false,
-        data: payload,
       };
     case FETCH_COMPANY_FAILURE:
       return {
         ...state,
-        isSearching: false,
-        isLoading: false,
-        error: true,
-      };
-    case FETCH_COMPANY_DETAILS:
-      return {
-        ...state,
-        currentCompany: payload,
+        isError: true,
       };
     default:
       return state;
   }
 };
-
-export { CompanyReducer };
