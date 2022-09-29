@@ -113,7 +113,7 @@ export const JobContainer = styled.div`
 
 
 export const CompContainer = styled.div`
-  height: 16vh;
+  // height: 16vh;
   border-radius: 10px;
   padding: 1vw;
   margin: 0.4vw;
