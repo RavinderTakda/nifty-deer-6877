@@ -1,76 +1,56 @@
 import {
-  Alert,
-  AlertTitle,
-  Button,
-  Container,
-  FormControl,
-  Heading,
-  Highlight,
-  Input,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import React, { useContext, useEffect, useState } from "react";
-import { StarIcon } from "@chakra-ui/icons";
-import { ImArrowRight2 } from "react-icons/im";
-import { FcGoogle } from "react-icons/fc";
-import { BsFacebook, BsApple } from "react-icons/bs";
-// import { auth, signInWithGoogle } from "../../Firebase";
-import { useNavigate } from "react-router-dom";
-import {createUserWithEmailAndPassword} from "firebase/auth"
-import {auth,signInWithGoogle} from "../../Firebase"
-import {GoogleAuthProvider,signInWithPopup} from "firebase/auth"
-
-
-
-export const SignUp = () => {
+    Alert,
+    AlertTitle,
+    Button,
+    Container,
+    FormControl,
+    Heading,
+    Highlight,
+    Input,
+    Text,
+    VStack,
+  } from "@chakra-ui/react";
+  import React, { useContext, useEffect, useState } from "react";
+  import { StarIcon } from "@chakra-ui/icons";
+  import { ImArrowRight2 } from "react-icons/im";
+  import { FcGoogle } from "react-icons/fc";
+  import { BsFacebook, BsApple } from "react-icons/bs";
+  // import { auth, signInWithGoogle } from "../../Firebase";
+  import { useNavigate } from "react-router-dom";
+  import {signInWithEmailAndPassword} from "firebase/auth"
+  import {auth} from "../../Firebase"
+export const Login = () => {
     const navigate=useNavigate()
-  const [value, setValue] = useState({
-    email: "",
-    pass: "",
-  });
-   const [submitButtonDisable,setSubmitButtonDisable] = useState(false);
-  const [errMgs,setErrMsg] = useState("")
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!value.email || !value.pass) {
-        <Alert>
-            <AlertTitle>("Fill all Fields")</AlertTitle>
-        </Alert>
-        return;
-    }
-    console.log(value);
-    createUserWithEmailAndPassword(auth,value.email,value.pass)
-    .then((res)=>{
-        setSubmitButtonDisable(false);
-         navigate("/login")
-        console.log(res)
-    }).catch((err)=>{
-         setSubmitButtonDisable(false);
-        setErrMsg(err.message)
-        // console.log(err)
-    })
-  };
-  const provider = new GoogleAuthProvider();
-     const signInWithGoogle=()=>{
-    signInWithPopup(auth,provider)
-    .then((res)=>{
-        console.log(res.data)
-        const email = res.user.email;
-        
-        localStorage.setItem("email", email)
-
-    }).catch((err)=>{
-        console.log(err)
-    })
-    
-    
-}
-
+    const [value, setValue] = useState({
+      email: "",
+      pass: "",
+    });
+     const [submitButtonDisable,setSubmitButtonDisable] = useState(false);
+    const [errMgs,setErrMsg] = useState("")
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (!value.email || !value.pass) {
+          <Alert>
+              <AlertTitle>("Fill all Fields")</AlertTitle>
+          </Alert>
+          return;
+      }
+      console.log(value);
+      signInWithEmailAndPassword(auth,value.email,value.pass)
+      .then((res)=>{
+          setSubmitButtonDisable(false);
+           navigate("/")
+          console.log(res)
+      }).catch((err)=>{
+           setSubmitButtonDisable(false);
+          setErrMsg(err.message)
+          // console.log(err)
+      })
+    };
   return (
-    <>
-      <Container my="5vh" centerContent>
+    <div>
+           <Container my="5vh" centerContent>
         {/* <Image src={logo} height="10" width="80" my="30px" /> */}
         <VStack
           bg={"white"}
@@ -83,8 +63,8 @@ export const SignUp = () => {
             "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
           }
         >
-          <Heading fontSize={22}>Create an account</Heading>
-          {/* <Text>before applying on company site1</Text> */}
+          <Heading fontSize={22}>Login In</Heading>
+          <Text>before applying on company site1</Text>
           <div></div>
           <Text fontSize={"xs"}>
             <Highlight
@@ -102,8 +82,8 @@ export const SignUp = () => {
             variant={"outline"}
             justifyContent="space-between"
             rightIcon={<div />}
-            onClick={signInWithGoogle}
-            navigate="/login"
+            // onClick={signInWithGoogle}
+            navigate="/"
           >
             Continue with Google
           </Button>
@@ -184,6 +164,6 @@ export const SignUp = () => {
           </form>
         </VStack>
       </Container>
-    </>
-  );
-};
+    </div>
+  )
+}
