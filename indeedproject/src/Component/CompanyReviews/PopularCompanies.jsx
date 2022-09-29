@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 // import { useHistory } from "react-router-dom";
 import { Box, Flex, SimpleGrid, Text, Image } from "@chakra-ui/react";
-// import { StarIcon } from "@chakra-ui/icons";
+import { StarIcon } from "@chakra-ui/icons";
 
 const PopularCompanies = () => {
   const [companies, setCompanies] = useState([]);

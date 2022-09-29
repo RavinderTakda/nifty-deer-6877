@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeStyles, Grid, Divider,  Button } from "@material-ui/core";
 import { Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure} from "@chakra-ui/react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Link } from "react-router-dom";
 // import {useDisclosure} from "react"
 
 //Styling Material UI Elements
@@ -18,7 +19,7 @@ const useStyles = makeStyles(() => ({
     margin: "6px",
     borderRadius: "10px",
     "@media (max-width:1280px)": {
-      maxWidth: "48%",
+      maxWidth: "80%",
     },
     "@media (max-width:768px)": {
       maxWidth: "100%",
@@ -70,14 +71,44 @@ const sizes = [ 'xxl']
           <Modal onClose={onClose} size={size} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Browse top-paying jobs by industry</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            hello
+            <div style={{display:"flex",justifyContent:"space-evenly",lineHeight:"40px",fontSize:"16px", fontWeight:"bolder"}}>
+                <div  className={styles.linkage}  style={{display:"flex",flexDirection:"column"}}>
+                    <Link>All Industries</Link>
+                    <Link>  Agriculture, Fishing & Forestry</Link>
+                   <Link> Architecture & Engineering</Link>
+                   <Link>  Business Management, Administrative & Customer Support</Link>
+                   <Link> Cleaning & Grounds Maintenance</Link>
+                   <Link> Community & Social Services</Link>
+                   <Link> Construction & Extraction</Link>
+                   <Link> Education & Instruction</Link>
+                </div>
+                <div  className={styles.linkage}  style={{display:"flex",flexDirection:"column"}}>
+                <Link>Finance & Accounting</Link>
+                <Link>Food & Beverage</Link>
+                <Link>Healthcare</Link>
+                <Link>Legal</Link>
+                <Link>Manufacturing & Utilities</Link>
+                <Link>Marketing, Advertising & Public Relations</Link>
+                <Link>Media, Arts & Design</Link>
+                <Link>Personal Service</Link>
+                </div>
+                <div  className={styles.linkage}  style={{display:"flex",flexDirection:"column"}}>
+                <Link>Repair, Maintenance & Installation</Link>
+                <Link>Safety, Security & Defence Service</Link>
+                <Link>Sales & Retail</Link>
+                <Link>Science & Research</Link>
+                <Link>Supply Chain & Logistics</Link>
+                <Link>Technology</Link>
+                <Link>Transportation</Link>
+                <Link>Travel, Attractions & Events</Link>
+                </div>
+            </div>
+            
           </ModalBody>
-          <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter>
+         <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
         </div>
@@ -92,18 +123,18 @@ const sizes = [ 'xxl']
                   item
                   xs={12}
                   sm={12}
-                  md={10}
+                  md={8}
                   lg={3}
                   xl={6}
                   className={classes.grid}
                 >
-                  <h4>{item.title}</h4>
+                  <Heading size={"sm"}>{item.title}</Heading>
                   <div style={{display:"flex"}}>
                     Average Salary
                     <span>{item.Avg_salary}</span>
                   </div>
                   <Divider component="hr" />
-                  <div>Job Openings</div>
+                  <Link style={{color:"blue",borderBottom:"1px solid blue"}}>Job Openings</Link>
                 </Grid>
               );
             })}
