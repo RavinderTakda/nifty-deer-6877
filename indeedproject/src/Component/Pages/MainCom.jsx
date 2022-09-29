@@ -8,7 +8,7 @@ import { Navbar } from './Navbar'
 export const MainCom = () => {
   return (
     <div>
-        {/* <Navbar/> */}
+        <Navbar/>
         <Allroutes/>
         {/* <Salary/> */}
         {/* <Footer/> */}
