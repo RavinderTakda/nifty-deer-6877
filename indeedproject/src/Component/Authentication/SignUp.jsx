@@ -15,10 +15,9 @@ import { StarIcon } from "@chakra-ui/icons";
 import { ImArrowRight2 } from "react-icons/im";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook, BsApple } from "react-icons/bs";
-// import { auth, signInWithGoogle } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 import {createUserWithEmailAndPassword} from "firebase/auth"
-import {auth,signInWithGoogle} from "../../Firebase"
+import {auth} from "../../Firebase"
 import {GoogleAuthProvider,signInWithPopup} from "firebase/auth"
 
 
