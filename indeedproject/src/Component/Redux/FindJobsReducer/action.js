@@ -11,6 +11,7 @@ export const jobsearchRequest = () => {
 };
 
 export const jobsearchSuccess = (payload) => {
+    console.log("payload",payload)
   return {
     type:JOBS_SEARCH_SUCCESS,
     payload,
@@ -31,7 +32,7 @@ export const SearchTopPayingJobs = (params) => (dispatch) => {
     .get("https://json-server-999.herokuapp.com/jobs",params)
     .then((response) => {
       dispatch(jobsearchSuccess(response.data));
-      console.log(response)
+    //   console.log(response.data)
     })
     .catch((err) => {
       dispatch(jobsearchFailure(err));

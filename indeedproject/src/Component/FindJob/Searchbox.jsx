@@ -1,8 +1,8 @@
 import { ChevronDownIcon } from "@chakra-ui/icons"
-import { Box, Button, Input, InputGroup, InputLeftAddon, Menu, MenuButton, MenuItem, MenuList, Stack } from "@chakra-ui/react"
+import { Box, Button, Heading, Input, InputGroup, InputLeftAddon, Menu, MenuButton, MenuItem, MenuList, Stack } from "@chakra-ui/react"
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { SearchTopPayingJobs } from "../Redux/FindJobsReducer/action"
 
 
@@ -12,6 +12,10 @@ import { SearchTopPayingJobs } from "../Redux/FindJobsReducer/action"
     const [jobtitle,setjobtitle] =useState("")
     const [city,setcity] =useState("")
 const dispatch =useDispatch()
+
+const data =useSelector(state=>state.SearchJobsReducer.data)
+console.log("data",data)
+
 
     const searchbyinput = (e) => {
 
@@ -57,6 +61,7 @@ const dispatch =useDispatch()
 
 
 return(
+   
 
 <div >
 
@@ -127,7 +132,36 @@ return(
 </Menu>
 
 </Box>
+
+
+{data.map((ele)=>{
+
+return(
+    <div style={{"height":"400px"}}>
+    <Heading size="sm">{ele.job_title}</Heading>
+    <p>{ele.company_name}</p>
+    {/* <p>{ele.city},{ele.state}</p> */}
+    <Button size="sm">{ele.job_type}</Button>
+    <Button size="sm">{ele.category}</Button>
+    <Box
+                pl="10"
+                height={"78%"}
+                overflowX="hidden"
+                overflowY="auto"
+                dangerouslySetInnerHTML={{ __html: ele.html_job_description }}
+              />
+
+    </div>
+)
+
+
+})}
+
 </div>
+
+
+
+
 )
 
 

@@ -2,7 +2,8 @@
 
 
 
-import {  JOBS_SEARCH_FAILURE, JOBS_SEARCH_REQUEST, JOBS_SEARCH_SUCCESS } from "./actionTypes";
+
+import {  JOBS_SEARCH_FAILURE, JOBS_SEARCH_REQUEST, JOBS_SEARCH_SUCCESS } from "./actiontypes";
 
 const initState = {
   isLoading:true,
@@ -10,7 +11,15 @@ const initState = {
     data:[],
 }
 
-export const SearchJobsReducer = (state = initState, { type, payload }) => {
+
+
+
+export const SearchJobsReducer = (state = initState, action) => {
+
+
+    const {type,payload} =action
+
+    console.log("dfsdfsdf")
   switch (type) {
     case JOBS_SEARCH_REQUEST:
       return {
