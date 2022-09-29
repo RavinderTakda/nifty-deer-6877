@@ -1,4 +1,6 @@
 import React from 'react'
+import CompanyReviews from '../CompanyReviews/CompanyReviews'
+import Salary from '../SalaryGuide/Salary'
 import { Allroutes } from './Allroutes'
 import { Footer } from './Footer'
 import { Navbar } from './Navbar'
@@ -8,7 +10,9 @@ export const MainCom = () => {
     <div>
         <Navbar/>
         <Allroutes/>
-        <Footer/>
+        {/* <Salary/> */}
+        {/* <Footer/> */}
+        {/* <CompanyReviews/> */}
     </div>
   )
 }
