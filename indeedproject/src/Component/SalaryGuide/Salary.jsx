@@ -77,8 +77,8 @@ function Salary() {
                 <h3>Where</h3>
               </Flex>
               <Flex>
-                <Input type="text" placeholder="job title" />
-                <Input type="text" placeholder="location" />
+                <Input type="text"  placeholder="job title" />
+                <Input type="text"  placeholder="location" />
                 <SearchButton>Search</SearchButton>
               </Flex>
             </SearchDiv>

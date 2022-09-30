@@ -4,6 +4,7 @@ import { Login } from '../Authentication/Login'
 import { SignUp } from '../Authentication/SignUp'
 import CompanyReviews from '../CompanyReviews/CompanyReviews'
 import SinglePage from '../CompanyReviews/SinglePage'
+import { CompanyInfo } from '../SalaryGuide/CompanyInfo'
 import Salary from '../SalaryGuide/Salary'
 
 export const Allroutes = () => {
@@ -15,6 +16,7 @@ export const Allroutes = () => {
           <Route path='/companyreview' element={<CompanyReviews/>}/>
           <Route path='/companyreview/:id' element={<SinglePage/>}/>
           <Route path="/salary" element={<Salary/>}/>
+          <Route path='/career/salaries/:id' element={<CompanyInfo/>}/>
         </Routes>
     </div>
   )

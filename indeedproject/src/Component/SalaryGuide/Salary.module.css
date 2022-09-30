@@ -96,17 +96,30 @@
 
 /* Styling of JobByCategory.jsx */
 .jobSalary {
-  width: 70%;
-  margin-top: 5vh;
-  justify-content: space-between;
+  border:0.5px solid gray;
+  width: 75%;
+  margin-top: 3vh;
+  padding: 5px;
   display: flex;
   flex-wrap: wrap;
-}
-
-.categoryJobs {
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
   position: relative;
-  top: 10%;
-  margin-top: -150px;
+}
+.jobSalary:hover{
+   cursor: pointer;
+   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.categoryJobs {
+  /* position: relative; */
+  /* border:1px solid red; */
+  width: 80%;
+  /* top: 10%; */
+  /* margin-top: -200px; */
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+
 }
 
 /* Styling of EmojisRating.jsx */
@@ -248,6 +261,9 @@
 
 .salaryInfo select:hover {
   outline: 1px solid #196dff;
+}
+.faq{
+  margin-left: -100px;
 }
 
 .faq div {

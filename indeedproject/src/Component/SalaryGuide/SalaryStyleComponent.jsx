@@ -126,10 +126,10 @@ export const Follow = styled.button`
   outline:none;
   border:none;
   margin:2vh;
-  background:#085ff7;
+  background:skyblue;
   transition:0.3s ease-in-out;
   color:white;
-  border-radius:30px;
+  border-radius:10px;
   &:hover {
     cursor:pointer;
     background:#4488ff;
