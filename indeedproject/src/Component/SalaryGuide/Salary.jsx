@@ -1,6 +1,8 @@
 import styles from "./Salary.module.css"
 import { makeStyles, Grid } from "@material-ui/core";
 import React from 'react'
+  import {EmojisRating} from "./Emoj"
+  import {SalariesFooter} from "./Footer"
 // import { Grid } from "@material-ui/core";
 import {
   Image,
@@ -12,6 +14,8 @@ import {
 } from "./SalaryStyleComponent"
 import { TPJobs } from "./TopJobs";
 import { Heading } from "@chakra-ui/react";
+import { TPCompany } from "./TopCompany";
+import { Navbar } from "../Pages/Navbar";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +54,7 @@ function Salary() {
   const classes = useStyles();
   return (
     <>
+     <Navbar/>
       <Container>
         <Grid>
           <Grid
@@ -74,8 +79,8 @@ function Salary() {
                 <h3>Where</h3>
               </Flex>
               <Flex>
-                <Input type="text" placeholder="job title" />
-                <Input type="text" placeholder="location" />
+                <Input type="text"  placeholder="job title" />
+                <Input type="text"  placeholder="location" />
                 <SearchButton>Search</SearchButton>
               </Flex>
             </SearchDiv>
@@ -92,8 +97,8 @@ function Salary() {
       </Container>
 
     <TPJobs/>
-
-
+    <TPCompany/>
+     
     <div className={styles.ratingContainer}>
           <Grid container>
 
@@ -118,7 +123,9 @@ function Salary() {
             </Grid>
 
           </Grid>
-        </div>   
+     </div>
+     <EmojisRating/> 
+     <SalariesFooter/>  
     </>
   )
 }

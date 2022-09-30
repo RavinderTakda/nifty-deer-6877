@@ -3,61 +3,39 @@ import {
   FETCH_COMPANY_SUCCESS,
   FETCH_COMPANY_FAILURE,
   FETCH_COMPANY_DETAILS,
-} from "../actionTypes";
-import axios from "axios";
+} from "./actionTypes";
 
-const fetchRequest = (payload) => {
+import axios from "axios";
+export const companyRequest = () => {
   return {
     type: FETCH_COMPANY_REQUEST,
-    payload: payload,
   };
 };
 
-const fetchSuccess = (payload) => {
+export const companySuccess = (payload) => {
   return {
     type: FETCH_COMPANY_SUCCESS,
-    payload: payload,
+    payload,
   };
 };
 
-const fetchFailure = (payload) => {
+export const companyFailure = (error) => {
   return {
     type: FETCH_COMPANY_FAILURE,
-    payload: payload,
+    error,
   };
 };
 
-const fetchCompanyDetails = (payload) => {
-  return {
-    type: FETCH_COMPANY_DETAILS,
-    payload: payload,
-  };
-};
-
-export const searchCompany = (query) => (dispatch) => {
-  dispatch(fetchRequest());
-
-  const config = {
-    method: "get",
-    url: "https://indeed-mock-server.herokuapp.com/companies",
-    params: {
-      q: query,
-    },
-  };
-
-  return axios(config)
-    .then((res) => {
-      dispatch(fetchSuccess(res.data));
+export const getCompanyReviews = (params) => (dispatch) => {
+  dispatch(companyRequest());
+  return axios
+    .get("https://indeed-mock-server.herokuapp.com/companies",params)
+    .then((response) => {
+      dispatch(companySuccess(response.data));
     })
-    .catch((err) => dispatch(fetchFailure("Somthing went wrong")));
+    .catch((error) => {
+      dispatch(companyFailure(error));
+    });
 };
 
-export const getCompanyReviews = (payload) => (dispatch) => {
-  axios
-    .get(`https://indeed-mock-server.herokuapp.com/companies?id=${payload}`)
-    .then((res) => {
-      dispatch(fetchCompanyDetails(res.data[0]));
-    })
-    .then(`https://indeed-mock-server.herokuapp.com/companies?id=${payload}`)
-    .catch((err) => console.log(err));
-};
+
