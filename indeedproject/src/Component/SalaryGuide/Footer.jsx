@@ -62,7 +62,7 @@ const Footer = styled.div`
   color: white;
   position: relative;
   @media (max-width: 990px) {
-    height: 70vh;
+    height: 200vh;
   }
 `;
 
