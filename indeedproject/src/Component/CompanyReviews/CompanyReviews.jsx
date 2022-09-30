@@ -1,5 +1,6 @@
 import { Navbar } from "../Pages/Navbar";
 import InputPart from "./InputPart";
+import MiniFooter from "./MiniFooter";
 import PopularCompanies from "./PopularCompanies";
 
 const CompanyReviews = () => {
@@ -8,6 +9,7 @@ const CompanyReviews = () => {
     <Navbar/>
       <InputPart />
       <PopularCompanies />
+      <MiniFooter/>
     </>
   );
 };

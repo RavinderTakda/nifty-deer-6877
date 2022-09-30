@@ -10,7 +10,7 @@ import { CompanyReducer } from "./CompanyReviews/reducer";
 import {SearchJobsReducer} from "../Redux/FindJobsReducer/reducer"
 
 
-// const rootReducer = combineReducers({ companies: CompanyReducer,topPayingJobsReducer:topPayingJobsReducer,SearchJobsReducer:SearchJobsReducer });
+
 import { jobsByCategoryReducer } from "./JobByCategoryreducer/reducer";
 import { topPayingCompReducer } from "./TopCompanyreducer/reducer";
 
