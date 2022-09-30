@@ -20,11 +20,11 @@ function App() {
   return (
     <div>
      
-        {/* <MainCom /> */}
+        <MainCom />
         
       {/* <Searchbox/> */}
 
-      <Allroutes/>
+      {/* <Allroutes/> */}
     </div>
   );
 }
