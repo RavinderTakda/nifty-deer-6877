@@ -10,8 +10,23 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getCompanyReviews } from "../Redux/CompanyReviews/action";
 
 const InputPart = () => {
+  const [text, setText] = useState("");
+
+  const dispatch = useDispatch();
+  const handleCLick = () => {
+    const getdata = {
+      params: {
+        company: text
+      },
+    };
+    dispatch(getCompanyReviews(getdata));
+  };
+  
   return (
     <Box w="60%" m="auto">
       <Text fontSize="5xl" fontWeight="bold" mt={10}>
@@ -24,11 +39,24 @@ const InputPart = () => {
         Company name or job title
       </Text>
       <Flex mb="4">
-        <InputGroup border="1px solid gray" borderRadius="6px" mt="2">
-          <Input />
+        <InputGroup  borderRadius="6px" mt="2">
+          <Input
+          isInvalid
+          errorBorderColor='gray.300'
+            value={text}
+           
+            onChange={(e) => setText(e.target.value)}
+          />
           <InputRightElement children={<SearchIcon color="black" />} />
         </InputGroup>
-        <Button colorScheme="blue" w="300px" mt="2" ml="2" p="2">
+        <Button
+          onClick={handleCLick}
+          colorScheme="blue"
+          w="300px"
+          mt="2"
+          ml="2"
+          p="2"
+        >
           Find Companies
         </Button>
       </Flex>
