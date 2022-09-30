@@ -1,31 +1,29 @@
-
 import {
-  FETCH_COMPANY_REQUEST,
-  FETCH_COMPANY_SUCCESS,
-  FETCH_COMPANY_DETAILS,
-  FETCH_COMPANY_FAILURE,
+    CATEGORY_JOBS_FAILURE,
+    CATEGORY_JOBS_REQUEST,
+    CATEGORY_JOBS_SUCCESS,
 } from "./actionTypes";
 
 const initState = {
   isLoading: true,
   isError: false,
-  company: [],
+  jobs_data: [],
 };
 
-export const CompanyReducer = (state = initState, { type, payload }) => {
+export const jobsByCategoryReducer = (state = initState, { type, payload }) => {
   switch (type) {
-    case FETCH_COMPANY_REQUEST:
+    case CATEGORY_JOBS_REQUEST:
       return {
         ...state,
         isLoading: true,
       };
-    case FETCH_COMPANY_SUCCESS:
+    case CATEGORY_JOBS_SUCCESS:
       return {
         ...state,
-        company: payload,
+        jobs_data: payload,
         isLoading: false,
       };
-    case FETCH_COMPANY_FAILURE:
+    case CATEGORY_JOBS_FAILURE:
       return {
         ...state,
         isError: true,
@@ -34,5 +32,3 @@ export const CompanyReducer = (state = initState, { type, payload }) => {
       return state;
   }
 };
-
-

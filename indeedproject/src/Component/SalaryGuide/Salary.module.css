@@ -5,6 +5,7 @@
   padding: 30px;
   position: relative;
   height: auto;
+  /* margin-bottom: 10px; */
 }
 .grid{
    border: 1px solid red;
@@ -52,9 +53,15 @@
   text-decoration: none;
   cursor: pointer;
 }
+.linkage>a:hover{
+   cursor: pointer;
+  border-bottom: 1px solid black;
+  width: fit-content;
+}
 .compCard {
   display: flex;
-  gap: 2vw;
+   width: 120%;
+   gap: 2vw;
   margin: 0px 10px;
   margin-top: 20px;
   transition: 0.3s ease-in-out;
@@ -89,17 +96,30 @@
 
 /* Styling of JobByCategory.jsx */
 .jobSalary {
-  width: 70%;
-  margin-top: 5vh;
-  justify-content: space-between;
+  border:0.5px solid gray;
+  width: 75%;
+  margin-top: 3vh;
+  padding: 5px;
   display: flex;
   flex-wrap: wrap;
-}
-
-.categoryJobs {
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
   position: relative;
-  top: 10%;
-  margin-top: -150px;
+}
+.jobSalary:hover{
+   cursor: pointer;
+   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.categoryJobs {
+  /* position: relative; */
+  /* border:1px solid red; */
+  width: 80%;
+  /* top: 10%; */
+  /* margin-top: -200px; */
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+
 }
 
 /* Styling of EmojisRating.jsx */
@@ -119,6 +139,8 @@
 }
 .findEarning div {
   margin: auto;
+  /* border: 1px solid red; */
+  display: flex;
 }
 .findEarning img {
   right: 30px;
@@ -130,28 +152,6 @@
   cursor: pointer;
 }
 
-.feedback {
-  margin-top: 5vh;
-  padding: 20px;
-  width: 100%;
-  font-size: 1rem;
-  height: 25vh;
-  border-radius: 10px;
-  outline: none;
-  border: 1px solid rgb(224, 224, 224);
-}
-
-.feedbackSubmit {
-  background: #085ff7;
-  color: white;
-  outline: none;
-  font-size: 1.2rem;
-  margin-top: 20px;
-  border: none;
-  width: 16vw;
-  height: 6vh;
-  border-radius: 50px;
-}
 
 /* Styling of CompanyInfo.jsx */
 .companyInfo {
@@ -262,6 +262,9 @@
 .salaryInfo select:hover {
   outline: 1px solid #196dff;
 }
+.faq{
+  margin-left: -100px;
+}
 
 .faq div {
   color: black;
@@ -285,7 +288,7 @@
 .emojiContainer {
   width: 95%;
   margin: auto;
-  /* border: 1px solid red; */
+  
   margin-top: 1%;
 }
 
@@ -301,13 +304,21 @@
   border-radius: 20px;
 }
 
-.jobsContainer,
+.jobsContainer{
+  display: flex;
+ /* border: 1px solid red; */
+  gap: 30px;
+ margin-top: 2%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
 .compContainer {
   display: flex;
  /* border: 1px solid red; */
   gap: 30px;
   margin-left: 30px;
-  /* justify-content: space-between; */
   flex-wrap: wrap;
   margin-bottom: 40px;
 }
