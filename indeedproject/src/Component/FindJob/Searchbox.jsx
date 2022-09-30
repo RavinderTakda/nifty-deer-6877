@@ -3,58 +3,66 @@ import { Box, Button, Heading, Input, InputGroup, InputLeftAddon, Menu, MenuButt
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { SearchTopPayingJobs } from "../Redux/FindJobsReducer/action"
-
+import { Footer } from "../Pages/Footer"
+import { Navbar } from "../Pages/Navbar"
+import { SearchTopPayingJobs, SingleFullDataJobs } from "../Redux/FindJobsReducer/action"
+import { Pagination } from "./Pagination"
+import { InputSearch } from "./Search"
+import styles from './Searchbox.module.css';
 
 
  export const Searchbox = () => {
 
-    const [jobtitle,setjobtitle] =useState("")
-    const [city,setcity] =useState("")
-const dispatch =useDispatch()
+  const [page,setpage] =useState(1)
+
+  const dispatch =useDispatch()
+
+
+  const [apply,setapply] =useState(true)
+  const [count,setcount] =useState(true)
+
 
 const data =useSelector(state=>state.SearchJobsReducer.data)
-console.log("data",data)
+const singledata =useSelector(state=>state.SearchJobsReducer.singledata)
+// console.log("data",data)
+// console.log("singledata",singledata)
+
+const fulldata =(id) => {
 
 
-    const searchbyinput = (e) => {
-
-   
+  let getBooksParams ={
+  
+  params:{
+    
+      id:id
      
-        let getBooksParams ={
-
-            params:{
-              
-                _page:"1",
-                city:city
-               
-            }
-            
-                }
-
-
-        dispatch(SearchTopPayingJobs(getBooksParams))
-
-
-
-    }
-
-
-    useEffect(()=>{
+  }
+  
+      }
+  
+  
+  
+  dispatch(SingleFullDataJobs(getBooksParams))
+  
+  
+  }
 
 
 
 
+const AlreadyApplied = () => {
 
+if(count>1){
 
+  alert("You are already applied")
 
+}
 
+setapply(false)
+setcount(count=>count+1)
 
-
-
-    },[])
-
-
+  
+}
 
 
 
@@ -64,28 +72,8 @@ return(
    
 
 <div >
-
-    <Box  display="flex" width="60%" margin="auto" marginTop="50px" >
-
-  <InputGroup>
-    <InputLeftAddon children='What' />
-    <Input onChange={(e)=>setjobtitle(e.target.value)} type='text' placeholder='Job title, Keywords or company' rightIcon="SearchIcon" width="70%"  />
-  </InputGroup>
-
-  {/* If you add the size prop to `InputGroup`, it'll pass it to all its children. */}
-  <InputGroup>
-    <InputLeftAddon children='Where' />
-    <Input  onChange={(e)=>setcity(e.target.value)} type='text'  placeholder='City, State or pin code'  leftIcon="PhoneIcon" width="70%"  />
- 
-  </InputGroup>
-
-
-
-  <Button onClick={searchbyinput} colorScheme='blue' width="15%" >Find Jobs</Button>
-
-
-
-</Box>
+<Navbar/>
+   <InputSearch page={page}/>
 
 
 <Box  display="flex" width="28%" justifyContent="space-between" margin="auto"  marginTop="50px">
@@ -134,20 +122,35 @@ return(
 </Box>
 
 
+
+
+<div className={styles.bigdiv} >
+
+
+
+
+
+
+
+
+<div>
+
 {data.map((ele)=>{
 
 return(
-    <div style={{"height":"400px"}}>
+
+    <div className={styles.searchbox} onClick={()=>fulldata(ele.id)} >
+   
     <Heading size="sm">{ele.job_title}</Heading>
     <p>{ele.company_name}</p>
-    {/* <p>{ele.city},{ele.state}</p> */}
+    <p>{ele.city},{ele.state}</p>
     <Button size="sm">{ele.job_type}</Button>
     <Button size="sm">{ele.category}</Button>
     <Box
                 pl="10"
                 height={"78%"}
-                overflowX="hidden"
-                overflowY="auto"
+                overflow="hidden"
+                // overflow="auto"
                 dangerouslySetInnerHTML={{ __html: ele.html_job_description }}
               />
 
@@ -156,6 +159,51 @@ return(
 
 
 })}
+
+</div>
+
+
+<div>
+
+{singledata.map((ele)=>{
+
+return(
+
+  <div className={styles.singledata} >
+ 
+  <Heading size="sm">{ele.job_title}</Heading>
+  <p>{ele.company_name}</p>
+  {/* <p>{ele.city},{ele.state}</p> */}
+  {/* <Button size="sm">{ele.job_type}</Button>
+  <Button size="sm">{ele.category}</Button> */}
+  <Button onClick={AlreadyApplied} backgroundColor="blue" color="white">{apply?"Apply":"Applied"}</Button>
+  <Box
+              pl="10"
+              height={"78%"}
+              overflowX="hidden"
+              overflowY="auto"
+              dangerouslySetInnerHTML={{ __html: ele.html_job_description }}
+            />
+
+  </div>
+)
+
+
+
+})}
+
+</div>
+
+
+
+</div>
+
+
+
+<Pagination  current={page} onChange={page=>setpage(page)} />
+
+
+<Footer/>
 
 </div>
 

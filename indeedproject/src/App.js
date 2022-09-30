@@ -10,7 +10,9 @@
 // =======
 
 import "./App.css";
+import { HomePage } from "./Component/FindJob/HomePage";
 import { Searchbox } from "./Component/FindJob/Searchbox";
+import { Allroutes } from "./Component/Pages/Allroutes";
 
 import { MainCom } from "./Component/Pages/MainCom";
 
@@ -20,7 +22,9 @@ function App() {
      
         {/* <MainCom /> */}
         
-      <Searchbox/>
+      {/* <Searchbox/> */}
+
+      <Allroutes/>
     </div>
   );
 }

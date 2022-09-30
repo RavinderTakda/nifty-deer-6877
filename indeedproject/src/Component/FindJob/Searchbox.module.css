@@ -1,0 +1,32 @@
+.searchbox{
+   height: 400px;
+   /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+   width: 85%;
+   border: 1px solid red;
+cursor: pointer;
+
+
+}
+
+
+
+.singledata{
+
+   height: 800px;
+
+border: 1px solid red;
+
+
+
+}
+
+
+
+
+.bigdiv{
+
+width: 70%;
+   border: 1px solid black;
+   display: flex;
+   margin: auto;
+}
