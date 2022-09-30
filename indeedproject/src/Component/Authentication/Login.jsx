@@ -18,7 +18,7 @@ import {
   import {auth} from "../../Firebase"
 
 
-  
+
 export const Login = () => {
     const navigate=useNavigate()
     const [value, setValue] = useState({
