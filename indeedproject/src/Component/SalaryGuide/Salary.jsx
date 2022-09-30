@@ -15,6 +15,7 @@ import {
 import { TPJobs } from "./TopJobs";
 import { Heading } from "@chakra-ui/react";
 import { TPCompany } from "./TopCompany";
+import { Navbar } from "../Pages/Navbar";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +54,7 @@ function Salary() {
   const classes = useStyles();
   return (
     <>
+     <Navbar/>
       <Container>
         <Grid>
           <Grid

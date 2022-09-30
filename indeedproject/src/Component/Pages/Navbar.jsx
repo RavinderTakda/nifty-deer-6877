@@ -13,15 +13,28 @@ import {
   MenuList,
   Center,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsFillChatLeftTextFill } from "react-icons/bs";
 import { FaBell } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth,signOut } from "firebase/auth";
+import { auth } from '../../Firebase'
 
 
-export const Navbar = ({ name }) => {
+
+export const Navbar = () => {
+  const [userName,setUserName] = useState("");
+  useEffect(()=>{
+   auth.onAuthStateChanged((user)=>{
+     if(user){
+       setUserName(user.email);
+     }else setUserName("")
+     console.log(user);
+   })
+  },[])
+
+
   const navigate= useNavigate()
 
   const handleLogout = () => {
@@ -78,7 +91,7 @@ export const Navbar = ({ name }) => {
                 </MenuButton>
                 <MenuList>
                   <MenuGroup title="Profile">
-                    <MenuItem>{name}</MenuItem>
+                    <MenuItem>{userName}</MenuItem>
                     <MenuItem>My jobs</MenuItem>
                     <MenuItem>My reviews</MenuItem>
                     <MenuDivider />
