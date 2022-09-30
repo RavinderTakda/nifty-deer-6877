@@ -16,61 +16,58 @@ import { ImArrowRight2 } from "react-icons/im";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook, BsApple } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import {createUserWithEmailAndPassword} from "firebase/auth"
-import {auth} from "../../Firebase"
-// import {GoogleAuthProvider,signInWithPopup} from "firebase/auth"
-
-
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../Firebase";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 export const SignUp = () => {
-    const navigate=useNavigate()
+  const navigate = useNavigate();
   const [value, setValue] = useState({
     email: "",
     pass: "",
   });
-   const [submitButtonDisable,setSubmitButtonDisable] = useState(false);
-  const [errMgs,setErrMsg] = useState("")
+  const [submitButtonDisable, setSubmitButtonDisable] = useState(false);
+  const [errMgs, setErrMsg] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value.email || !value.pass) {
-        <Alert>
-            <AlertTitle>("Fill all Fields")</AlertTitle>
-        </Alert>
-        return;
+        alert("Please fill details")
+      return;
     }
-    console.log(value);
-    createUserWithEmailAndPassword(auth,value.email,value.pass)
-    .then((res)=>{
+    // console.log(value);
+    createUserWithEmailAndPassword(auth, value.email, value.pass)
+      .then(async (res) => {
         setSubmitButtonDisable(false);
-         navigate("/login")
-        console.log(res)
-    }).catch((err)=>{
-         setSubmitButtonDisable(false);
-        setErrMsg(err.message)
-        // console.log(err)
-    })
-  };
-//   const provider = new GoogleAuthProvider();
-//      const signInWithGoogle=()=>{
-//     signInWithPopup(auth,provider)
-//     .then((res)=>{
-//         console.log(res.data)
-//         const email = res.user.email;
-        
-//         localStorage.setItem("email", email)
 
-//     }).catch((err)=>{
-//         console.log(err)
-//     })
-    
-    
-// }
+        const user = res.user;
+        await updateProfile(user, {
+          email: value.email,
+        });
+        navigate("/login");
+      })
+      .catch((err) => {
+        setSubmitButtonDisable(false);
+        setErrMsg(err.message);
+        // console.log(err)
+      });
+  };
+  const provider = new GoogleAuthProvider();
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        console.log(res.data);
+        const email = res.user.email;
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <>
       <Container my="5vh" centerContent>
-        {/* <Image src={logo} height="10" width="80" my="30px" /> */}
         <VStack
           bg={"white"}
           w={"100%"}
@@ -83,7 +80,6 @@ export const SignUp = () => {
           }
         >
           <Heading fontSize={22}>Create an account</Heading>
-          {/* <Text>before applying on company site1</Text> */}
           <div></div>
           <Text fontSize={"xs"}>
             <Highlight
@@ -101,7 +97,7 @@ export const SignUp = () => {
             variant={"outline"}
             justifyContent="space-between"
             rightIcon={<div />}
-            // onClick={signInWithGoogle}
+            onClick={signInWithGoogle}
             navigate="/login"
           >
             Continue with Google
@@ -174,9 +170,6 @@ export const SignUp = () => {
               rightIcon={<ImArrowRight2 />}
               onClick={handleSubmit}
               disabled={submitButtonDisable}
-              
-              //   isLoading={state.isLoading ? "YES" : ""}
-              //   loadingText="Verifying Email address"
             >
               Continue
             </Button>

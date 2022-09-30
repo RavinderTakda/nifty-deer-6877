@@ -1,6 +1,4 @@
 import {
-    Alert,
-    AlertTitle,
     Button,
     Container,
     FormControl,
@@ -10,15 +8,17 @@ import {
     Text,
     VStack,
   } from "@chakra-ui/react";
-  import React, { useContext, useEffect, useState } from "react";
+  import React, { useState } from "react";
   import { StarIcon } from "@chakra-ui/icons";
   import { ImArrowRight2 } from "react-icons/im";
   import { FcGoogle } from "react-icons/fc";
   import { BsFacebook, BsApple } from "react-icons/bs";
-  // import {signInWithGoogle } from "../../Firebase";
   import { useNavigate } from "react-router-dom";
-  import {signInWithEmailAndPassword} from "firebase/auth"
+  import {signInWithEmailAndPassword,updateProfile ,signInWithPopup,GoogleAuthProvider} from "firebase/auth"
   import {auth} from "../../Firebase"
+
+
+
 export const Login = () => {
     const navigate=useNavigate()
     const [value, setValue] = useState({
@@ -31,23 +31,40 @@ export const Login = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
       if (!value.email || !value.pass) {
-          <Alert>
-              <AlertTitle>("Fill all Fields")</AlertTitle>
-          </Alert>
+        alert("Please fill details")
           return;
       }
-      console.log(value);
+      // console.log(value);
       signInWithEmailAndPassword(auth,value.email,value.pass)
-      .then((res)=>{
-          setSubmitButtonDisable(false);
+      .then(async(res)=>{
+        setSubmitButtonDisable(false);
+       
+        const user = res.user;
+        await updateProfile(user,{
+          email:value.email
+        });
            navigate("/")
-          console.log(res)
       }).catch((err)=>{
            setSubmitButtonDisable(false);
           setErrMsg(err.message)
           // console.log(err)
       })
     };
+
+    const provider = new GoogleAuthProvider();
+    const signInWithGoogle = () => {
+      signInWithPopup(auth, provider)
+        .then((res) => {
+          console.log(res.data);
+          const email = res.user.email;
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    
   return (
     <div>
            <Container my="5vh" centerContent>
@@ -82,7 +99,7 @@ export const Login = () => {
             variant={"outline"}
             justifyContent="space-between"
             rightIcon={<div />}
-            // onClick={signInWithGoogle}
+            onClick={signInWithGoogle}
             navigate="/"
           >
             Continue with Google

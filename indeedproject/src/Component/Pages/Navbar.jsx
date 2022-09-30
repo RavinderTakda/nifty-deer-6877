@@ -11,14 +11,32 @@ import {
   MenuGroup,
   MenuItem,
   MenuList,
+  Center,
 } from "@chakra-ui/react";
 import React from "react";
 import { BsFillChatLeftTextFill } from "react-icons/bs";
 import { FaBell } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth,signOut } from "firebase/auth";
 
-export const Navbar = () => {
+
+export const Navbar = ({ name }) => {
+  const navigate= useNavigate()
+
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigate("/login")
+
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
   return (
     <div>
       <Box m={5} p={1}>
@@ -55,16 +73,18 @@ export const Navbar = () => {
             </Box>
             <Box py={2}>
               <Menu>
-                 <MenuButton as={Button}> <CgProfile /> </MenuButton>
+                <MenuButton as={Button}>
+                  <CgProfile />
+                </MenuButton>
                 <MenuList>
                   <MenuGroup title="Profile">
-                    <MenuItem>My Account</MenuItem>
-                    <MenuItem>Payments </MenuItem>
-                  </MenuGroup>
-                  <MenuDivider />
-                  <MenuGroup title="Help">
-                    <MenuItem>Docs</MenuItem>
-                    <MenuItem>FAQ</MenuItem>
+                    <MenuItem>{name}</MenuItem>
+                    <MenuItem>My jobs</MenuItem>
+                    <MenuItem>My reviews</MenuItem>
+                    <MenuDivider />
+                    <Center onClick={handleLogout}>
+                      <b>Sign Out</b>
+                    </Center>
                   </MenuGroup>
                 </MenuList>
               </Menu>
