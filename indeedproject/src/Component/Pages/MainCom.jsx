@@ -8,7 +8,7 @@ export const MainCom = () => {
 
   return (
     <div>
-        {/* <Navbar name={userName}/> */}
+     
         <Allroutes/>
     </div>
   )
