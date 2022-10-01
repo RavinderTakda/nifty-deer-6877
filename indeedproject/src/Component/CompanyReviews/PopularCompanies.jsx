@@ -12,7 +12,7 @@ const PopularCompanies = () => {
   useEffect(() => {
     dispatch(getCompanyReviews());
   }, [dispatch]);
-  console.log(companies);
+  // console.log(companies);
 
   return (
     <Box w="60%" m="auto" mt="10" h="500">

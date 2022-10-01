@@ -11,7 +11,7 @@ export const jobsearchRequest = () => {
 };
 
 export const jobsearchSuccess = (payload) => {
-    console.log("payload",payload)
+    // console.log("payload",payload)
   return {
     type:JOBS_SEARCH_SUCCESS,
     payload,
@@ -51,7 +51,7 @@ export const singlejobsearchFailure = (err) => {
 
 
 export const SearchTopPayingJobs = (params) => (dispatch) => {
-    console.log('searchbycity')
+    // console.log('searchbycity')
   dispatch(jobsearchRequest());
   return axios
     .get("https://json-server-999.herokuapp.com/jobs",params)

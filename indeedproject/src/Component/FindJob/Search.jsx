@@ -12,7 +12,7 @@ import { handledata } from "./HomePage"
 
   const dispatch =useDispatch()
 
-console.log(handledata())
+// console.log(handledata())
 
 
 
