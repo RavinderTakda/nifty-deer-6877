@@ -12,7 +12,7 @@ const PopularCompanies = () => {
   useEffect(() => {
     dispatch(getCompanyReviews());
   }, [dispatch]);
-  console.log(companies);
+  // console.log(companies);
 
   return (
     <>

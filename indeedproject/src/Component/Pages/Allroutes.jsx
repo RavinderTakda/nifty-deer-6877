@@ -8,6 +8,7 @@ import { Searchbox } from '../FindJob/Searchbox'
 import SinglePage from '../CompanyReviews/SinglePage'
 import { CompanyInfo } from '../SalaryGuide/CompanyInfo'
 import Salary from '../SalaryGuide/Salary'
+import { UserRoute } from './UserRoute'
 
 export const Allroutes = () => {
   return (
@@ -19,7 +20,11 @@ export const Allroutes = () => {
           <Route path='/companyreview/:id' element={<SinglePage/>}/>
           <Route path="/salary" element={<Salary/>}/>
           <Route path="/findjob"  element={<Searchbox/>} />
+
+          <Route path="/"  element={<UserRoute><HomePage/></UserRoute>} />
+
           <Route path="/"  element={<HomePage/>} />
+
           <Route path='/career/salaries/:id' element={<CompanyInfo/>}/>
         </Routes>
     </div>

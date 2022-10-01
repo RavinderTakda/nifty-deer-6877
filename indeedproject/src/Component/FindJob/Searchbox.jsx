@@ -25,6 +25,7 @@ import styles from './Searchbox.module.css';
 
 
 const data =useSelector(state=>state.SearchJobsReducer.data)
+console.log(data)
 const singledata =useSelector(state=>state.SearchJobsReducer.singledata)
 // console.log("data",data)
 // console.log("singledata",singledata)
