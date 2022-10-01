@@ -1,6 +1,6 @@
 /* Styling of PageRating.jsx */
 .ratingContainer {
-  /* border: 1px solid rgb(230, 231, 230); */
+  border: 1px solid rgb(230, 231, 230);
   border-radius: 10px;
   padding: 30px;
   position: relative;
