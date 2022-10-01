@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from "@chakra-ui/icons"
-import { Box, Button, Divider, Heading, Input, InputGroup, InputLeftAddon, Menu, MenuButton, MenuItem, MenuList, Stack } from "@chakra-ui/react"
+import { Box, Button, Divider, FormControl, FormLabel, Heading, Input, InputGroup, InputLeftAddon, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stack, useDisclosure } from "@chakra-ui/react"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -10,9 +10,10 @@ import { SearchTopPayingJobs, SingleFullDataJobs } from "../Redux/FindJobsReduce
 import { Pagination } from "./Pagination"
 import { InputSearch } from "./Search"
 import styles from './Searchbox.module.css';
-
+import { MdOutlineUploadFile} from 'react-icons/md';
 
  export const Searchbox = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const title=useSelector(state=>state.TitleReducer.what)
   const location=useSelector(state=>state.TitleReducer.where)
    console.log(title,location);
@@ -52,20 +53,6 @@ const fulldata =(id) => {
 
 
 
-
-const AlreadyApplied = () => {
-
-if(count>1){
-
-  alert("You are already applied")
-
-}
-
-setapply(false)
-setcount(count=>count+1)
-
-  
-}
 
 
 
@@ -179,9 +166,86 @@ return(
   <p>{ele.city},{ele.state}</p>
   {/* <Button size="sm">{ele.job_type}</Button>
   <Button size="sm">{ele.category}</Button> */}
-  <Link to={"/applyjob"}>
-  <Button marginTop={"5px"} onClick={AlreadyApplied} backgroundColor="blue" color="white">{apply?"Apply Now":"Applied"}</Button>
-  </Link>
+
+  <Button   marginTop={"5px"} onClick={()=>{
+
+{apply?onOpen():onclose()}
+
+
+  }} backgroundColor="blue" color="white">{apply?"Apply Now":"Applied"}</Button>
+
+
+      <Modal
+
+  isOpen={isOpen}
+  onClose={onClose}
+>
+  <ModalOverlay />
+  <ModalContent>
+    <ModalHeader>Add your contact information</ModalHeader>
+    <ModalCloseButton />
+    <ModalBody pb={6}>
+      <FormControl>
+        <FormLabel>First name</FormLabel>
+        <Input  placeholder='First name' />
+      </FormControl>
+
+      <FormControl mt={4}>
+        <FormLabel>Last name</FormLabel>
+        <Input placeholder='Last name' />
+      </FormControl>
+
+
+      <FormControl mt={4}>
+<FormLabel>Email</FormLabel>
+<Input placeholder='Email' ></Input>
+    </FormControl>
+
+
+    <FormControl mt={4}>
+      <FormLabel>City, State(optional)</FormLabel>
+      <Input placeholder='City' ></Input>
+    </FormControl>
+
+    <FormControl mt={4}>
+      <FormLabel>Phone Number</FormLabel>
+      <Input placeholder='Phone Number' ></Input>
+    </FormControl>
+
+    <FormControl mt={4} >
+      <FormLabel>Upload Resume</FormLabel>
+      <Box display={'flex'}>
+      <InputGroup>
+    <InputLeftElement
+      pointerEvents='none'
+      children={<MdOutlineUploadFile size={"30px"}/>}
+    />
+    <Input type='file' placeholder='Phone number' />
+  </InputGroup>
+      </Box>
+    </FormControl>
+
+    
+
+    </ModalBody>
+
+
+  
+
+    <ModalFooter>
+      <Button onClick={()=>{
+        setapply(false)
+
+onClose()
+
+      }} colorScheme='blue' mr={3}>
+        Submit
+      </Button>
+      <Button onClick={onClose}>Cancel</Button>
+    </ModalFooter>
+  </ModalContent>
+</Modal>
+
   
   </Box>
   <Box
