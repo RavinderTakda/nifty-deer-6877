@@ -6,8 +6,7 @@ import { getTopPayingComp } from "../Redux/TopCompanyreducer/action";
 import StarRatings from "react-star-ratings";
 import { Button, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure} from "@chakra-ui/react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-// import { KeyboardArrowDown } from "@material-ui/icons";
-// import { Loading } from "../Loading/Loading";
+
 import styles from "./Salary.module.css";
 import { CompContainer } from "./SalaryStyleComponent";
 
@@ -26,7 +25,6 @@ const useStyles = makeStyles(() => ({
 const TPCompany = () => {
   const classes = useStyles();
   const tpComp = useSelector((state) => state.topPayingComp.companies);
-//   const isLoading = useSelector((state) => state.topPayingComp.isLoading);
   const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [size, setSize] =useState('md')
@@ -39,9 +37,7 @@ const TPCompany = () => {
     onOpen()
   }
   const sizes = [ 'xxl']
-//   return isLoading ? (
-//     <Loading />
-//   ) : 
+
    return(
 
     <div className={styles.tpComp}>

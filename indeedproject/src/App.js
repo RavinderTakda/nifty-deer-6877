@@ -10,6 +10,11 @@
 // =======
 
 import "./App.css";
+import { ApplyJobForm } from "./Component/FindJob/ApplyJobForm";
+import { HomePage } from "./Component/FindJob/HomePage";
+import { Searchbox } from "./Component/FindJob/Searchbox";
+import { Allroutes } from "./Component/Pages/Allroutes";
+
 import { MainCom } from "./Component/Pages/MainCom";
 
 function App() {
@@ -17,8 +22,8 @@ function App() {
     <div>
      
         <MainCom />
-     
-      
+        
+    {/* <ApplyJobForm></ApplyJobForm> */}
     </div>
   );
 }

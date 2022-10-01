@@ -83,10 +83,14 @@
   border: 1px solid #ececec;
 }
 
+
 .starRating {
   display: flex;
   margin-top: 10px;
   gap: 10px;
+  /* border: 1px solid red; */
+  align-items: center;
+  justify-content: space-between;
 }
 
 .starRating p {
@@ -96,17 +100,30 @@
 
 /* Styling of JobByCategory.jsx */
 .jobSalary {
-  width: 70%;
-  margin-top: 5vh;
-  justify-content: space-between;
+  border:0.5px solid gray;
+  width: 75%;
+  margin-top: 3vh;
+  padding: 5px;
   display: flex;
   flex-wrap: wrap;
-}
-
-.categoryJobs {
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
   position: relative;
-  top: 10%;
-  margin-top: -150px;
+}
+.jobSalary:hover{
+   cursor: pointer;
+   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.categoryJobs {
+  /* position: relative; */
+  /* border:1px solid red; */
+  width: 80%;
+  /* top: 10%; */
+  /* margin-top: -200px; */
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+
 }
 
 /* Styling of EmojisRating.jsx */
@@ -211,7 +228,17 @@
 }
 
 .salaryInfo {
-  position: relative;
+  /* position: relative; */
+  /* border: 1px solid red; */
+  width: 110%;
+}
+.claim{
+  border: 1px solid gray;
+  margin-right: 20px;
+  padding: 12px;
+ font-weight: 600;
+ border-radius: 5px;
+  cursor: pointer;
 }
 
 .salaryInfo > div {
@@ -221,7 +248,8 @@
 }
 
 .salaryInfo div > div {
-  flex-basis: 10vw;
+  flex-basis: 12vw;
+
 }
 .salaryInfo div div:nth-child(1) {
   flex-grow: 1;
@@ -248,6 +276,9 @@
 
 .salaryInfo select:hover {
   outline: 1px solid #196dff;
+}
+.faq{
+  margin-left: -100px;
 }
 
 .faq div {

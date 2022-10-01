@@ -5,13 +5,15 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import { logo } from "./data";
+import { Link } from "react-router-dom";
 
 const SalariesFooter = () => {
   return (
     <>
       <Footer>
+        <Link to="/">
         <Logo src={logo} alt="Indeed logo" width="15%" />
-
+        </Link>
         <Flex>
           <div>
             <div>Explore Indeed</div>
@@ -38,10 +40,18 @@ const SalariesFooter = () => {
         <div>
           <SocialIcons>
             <div>Follow us</div>
+          <a href="https://twitter.com/Indeed?from=gnav-title-webapp">
             <TwitterIcon />
+          </a>
+          <a href="https://www.facebook.com/Indeed?from=gnav-title-webapp">
             <FacebookIcon />
+          </a>
+            <a href="https://www.instagram.com/indeedworks/?from=gnav-title-webapp">
             <InstagramIcon />
+            </a>
+            <a href="https://www.youtube.com/user/IndeedJobs">
             <YouTubeIcon />
+            </a>
           </SocialIcons>
         </div>
 
@@ -62,7 +72,7 @@ const Footer = styled.div`
   color: white;
   position: relative;
   @media (max-width: 990px) {
-    height: 70vh;
+    height: 200vh;
   }
 `;
 
