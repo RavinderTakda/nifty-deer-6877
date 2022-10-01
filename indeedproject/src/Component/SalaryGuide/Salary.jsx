@@ -1,6 +1,6 @@
 import styles from "./Salary.module.css"
 import { makeStyles, Grid } from "@material-ui/core";
-import React from 'react'
+import React, { useState } from 'react'
   import {EmojisRating} from "./Emoj"
   import {SalariesFooter} from "./Footer"
 // import { Grid } from "@material-ui/core";
@@ -16,6 +16,10 @@ import { TPJobs } from "./TopJobs";
 import { Heading } from "@chakra-ui/react";
 import { TPCompany } from "./TopCompany";
 import { Navbar } from "../Pages/Navbar";
+import { useNavigate } from "react-router-dom";
+import { Searchbox } from "../FindJob/Searchbox";
+import { useDispatch } from "react-redux";
+import { getData } from "../Redux/TitleReducer/action";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -52,6 +56,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Salary() {
   const classes = useStyles();
+  const [title,setTitle]=useState("")
+  const [location,setLocation]=useState("")
+   const navigate=useNavigate()
+   const dispatch=useDispatch()
+  const handleData=()=>{
+    const data={
+       title:title,
+       location:location
+    }
+      dispatch(getData(data))
+      navigate("/findjob")
+  }
+
   return (
     <>
      <Navbar/>
@@ -79,9 +96,9 @@ function Salary() {
                 <h3>Where</h3>
               </Flex>
               <Flex>
-                <Input type="text"  placeholder="job title" />
-                <Input type="text"  placeholder="location" />
-                <SearchButton>Search</SearchButton>
+                <Input type="text" value={title}  placeholder="job title"  onChange={(e)=>setTitle(e.target.value)} />
+                <Input type="text" value={location}  placeholder="location" onChange={(e)=>setLocation(e.target.value)} />
+                <SearchButton onClick={handleData}>Search</SearchButton>
               </Flex>
             </SearchDiv>
           </Grid>
@@ -125,7 +142,7 @@ function Salary() {
           </Grid>
      </div>
      <EmojisRating/> 
-     <SalariesFooter/>  
+     <SalariesFooter/> 
     </>
   )
 }
