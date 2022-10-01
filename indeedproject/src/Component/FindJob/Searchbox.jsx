@@ -13,7 +13,9 @@ import styles from './Searchbox.module.css';
 
 
  export const Searchbox = () => {
-
+  const title=useSelector(state=>state.TitleReducer.what)
+  const location=useSelector(state=>state.TitleReducer.where)
+   console.log(title,location);
   const [page,setpage] =useState(1)
 
   const dispatch =useDispatch()
