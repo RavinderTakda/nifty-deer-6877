@@ -57,6 +57,11 @@ const logOutFail =(err)=>{
     }
 }
 
+export const setUser=(user)=>({
+    type:types.SET_USER,
+    payload:user,
+})
+
 export const RegisterUser=(email,password,displayName)=>{
     return function(dispatch){
         dispatch(registerRequest());

@@ -23,6 +23,14 @@ export const userReducer = (state = initial, action) => {
         currentUser: null,
         // isAuth:false,
       };
+     case types.SET_USER:
+      return {
+       ...state,
+       isLoading:false,
+       currentUser:payload 
+      }
+
+
     case types.REGISTER_SUCCESS:
     case types.LOGIN_SUCCESS:
       return {
