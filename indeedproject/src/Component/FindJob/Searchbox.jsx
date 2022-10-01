@@ -27,6 +27,7 @@ import { MdOutlineUploadFile} from 'react-icons/md';
 
 
 const data =useSelector(state=>state.SearchJobsReducer.data)
+console.log(data)
 const singledata =useSelector(state=>state.SearchJobsReducer.singledata)
 // console.log("data",data)
 // console.log("singledata",singledata)
