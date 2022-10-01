@@ -61,7 +61,7 @@ export const SearchTopPayingJobs = (params) => (dispatch) => {
     })
     .catch((err) => {
       dispatch(jobsearchFailure(err));
-      console.log(err)
+      // console.log(err)
     });
 };
 

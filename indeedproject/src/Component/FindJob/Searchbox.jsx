@@ -1,17 +1,19 @@
 import { ChevronDownIcon } from "@chakra-ui/icons"
-import { Box, Button, Heading, Input, InputGroup, InputLeftAddon, Menu, MenuButton, MenuItem, MenuList, Stack } from "@chakra-ui/react"
+import { Box, Button, Divider, FormControl, FormLabel, Heading, Input, InputGroup, InputLeftAddon, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stack, useDisclosure } from "@chakra-ui/react"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 import { Footer } from "../Pages/Footer"
 import { Navbar } from "../Pages/Navbar"
 import { SearchTopPayingJobs, SingleFullDataJobs } from "../Redux/FindJobsReducer/action"
 import { Pagination } from "./Pagination"
 import { InputSearch } from "./Search"
 import styles from './Searchbox.module.css';
-
+import { MdOutlineUploadFile} from 'react-icons/md';
 
  export const Searchbox = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const title=useSelector(state=>state.TitleReducer.what)
   const location=useSelector(state=>state.TitleReducer.where)
    console.log(title,location);
@@ -52,20 +54,6 @@ const fulldata =(id) => {
 
 
 
-
-const AlreadyApplied = () => {
-
-if(count>1){
-
-  alert("You are already applied")
-
-}
-
-setapply(false)
-setcount(count=>count+1)
-
-  
-}
 
 
 
@@ -125,39 +113,38 @@ return(
 </Box>
 
 
+<Divider  orientation='horizontal' marginTop={"30px"}  />
+
+
 
 
 <div className={styles.bigdiv} >
 
 
 
-
-
-
-
-
-<div>
+<div style={{"width":"49%"}}>
 
 {data.map((ele)=>{
 
 return(
 
-    <div className={styles.searchbox} onClick={()=>fulldata(ele.id)} >
+    <Box   pl="5" className={styles.searchbox}   onClick={()=>fulldata(ele.id)} >
    
     <Heading size="sm">{ele.job_title}</Heading>
     <p>{ele.company_name}</p>
     <p>{ele.city},{ele.state}</p>
-    <Button size="sm">{ele.job_type}</Button>
+    <Button  size="sm">{ele.job_type}</Button>
     <Button size="sm">{ele.category}</Button>
     <Box
-                pl="10"
-                height={"78%"}
+                pl="0"
+                height={"57%"}
                 overflow="hidden"
                 // overflow="auto"
+                marginTop="8px"
                 dangerouslySetInnerHTML={{ __html: ele.html_job_description }}
               />
 
-    </div>
+    </Box>
 )
 
 
@@ -166,29 +153,112 @@ return(
 </div>
 
 
-<div>
+<div  style={{"width":"47%"}}>
 
 {singledata.map((ele)=>{
 
 return(
 
-  <div className={styles.singledata} >
+  <Box className={styles.singledata} >
  
+ <Box pl="5" boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"} width={"100%"} padding={"10px"}>
   <Heading size="sm">{ele.job_title}</Heading>
-  <p>{ele.company_name}</p>
-  {/* <p>{ele.city},{ele.state}</p> */}
+  <p style={{"color":"green"}}>{ele.company_name}</p>
+  <p>{ele.city},{ele.state}</p>
   {/* <Button size="sm">{ele.job_type}</Button>
   <Button size="sm">{ele.category}</Button> */}
-  <Button onClick={AlreadyApplied} backgroundColor="blue" color="white">{apply?"Apply":"Applied"}</Button>
+
+  <Button   marginTop={"5px"} onClick={()=>{
+
+{apply?onOpen():onclose()}
+
+
+  }} backgroundColor="blue" color="white">{apply?"Apply Now":"Applied"}</Button>
+
+
+      <Modal
+
+  isOpen={isOpen}
+  onClose={onClose}
+>
+  <ModalOverlay />
+  <ModalContent>
+    <ModalHeader>Add your contact information</ModalHeader>
+    <ModalCloseButton />
+    <ModalBody pb={6}>
+      <FormControl>
+        <FormLabel>First name</FormLabel>
+        <Input  placeholder='First name' />
+      </FormControl>
+
+      <FormControl mt={4}>
+        <FormLabel>Last name</FormLabel>
+        <Input placeholder='Last name' />
+      </FormControl>
+
+
+      <FormControl mt={4}>
+<FormLabel>Email</FormLabel>
+<Input placeholder='Email' ></Input>
+    </FormControl>
+
+
+    <FormControl mt={4}>
+      <FormLabel>City, State(optional)</FormLabel>
+      <Input placeholder='City' ></Input>
+    </FormControl>
+
+    <FormControl mt={4}>
+      <FormLabel>Phone Number</FormLabel>
+      <Input placeholder='Phone Number' ></Input>
+    </FormControl>
+
+    <FormControl mt={4} >
+      <FormLabel>Upload Resume</FormLabel>
+      <Box display={'flex'}>
+      <InputGroup>
+    <InputLeftElement
+      pointerEvents='none'
+      children={<MdOutlineUploadFile size={"30px"}/>}
+    />
+    <Input type='file' placeholder='Phone number' />
+  </InputGroup>
+      </Box>
+    </FormControl>
+
+    
+
+    </ModalBody>
+
+
+  
+
+    <ModalFooter>
+      <Button onClick={()=>{
+        setapply(false)
+
+onClose()
+
+      }} colorScheme='blue' mr={3}>
+        Submit
+      </Button>
+      <Button onClick={onClose}>Cancel</Button>
+    </ModalFooter>
+  </ModalContent>
+</Modal>
+
+  
+  </Box>
   <Box
-              pl="10"
-              height={"78%"}
+              pl="6"
+              height={"79%"}
               overflowX="hidden"
               overflowY="auto"
+              marginTop="8px"
               dangerouslySetInnerHTML={{ __html: ele.html_job_description }}
             />
 
-  </div>
+  </Box>
 )
 
 
