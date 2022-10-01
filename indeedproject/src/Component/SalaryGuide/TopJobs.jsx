@@ -60,7 +60,7 @@ const sizes = [ 'xxl']
       <div className={styles.tpJobs}>
          <div style={{width:"fit-content",textAlign:"start"}}>
         <Heading size={"lg"}>Browse top paying jobs by industry</Heading>
-        <div style={{border:"0.5px solid black",width:"80%",display:"flex",justifyContent:"space-between",borderRadius:"10px",marginTop:"10px"}}>
+        <div style={{border:"0.5px solid black",width:"80%",display:"flex",justifyContent:"space-between",alignItems:"center",borderRadius:"10px",marginTop:"10px"}}>
         <h2>Choose an industry</h2> 
         {sizes.map((size) => (
         <Button
@@ -134,7 +134,7 @@ const sizes = [ 'xxl']
                     <span>{item.Avg_salary}</span>
                   </div>
                   <Divider component="hr" />
-                  <Link style={{color:"blue",borderBottom:"1px solid blue"}}>Job Openings</Link>
+                  <Link to="/findjob"  style={{color:"blue",borderBottom:"1px solid blue"}}>Job Openings</Link>
                 </Grid>
               );
             })}

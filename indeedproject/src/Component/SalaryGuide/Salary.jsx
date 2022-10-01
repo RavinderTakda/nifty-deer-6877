@@ -13,11 +13,9 @@ import {
   Flex,
 } from "./SalaryStyleComponent"
 import { TPJobs } from "./TopJobs";
-import { Heading } from "@chakra-ui/react";
 import { TPCompany } from "./TopCompany";
 import { Navbar } from "../Pages/Navbar";
 import { useNavigate } from "react-router-dom";
-import { Searchbox } from "../FindJob/Searchbox";
 import { useDispatch } from "react-redux";
 import { getData } from "../Redux/TitleReducer/action";
 
