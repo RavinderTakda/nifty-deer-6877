@@ -9,6 +9,8 @@ import { Faq, Follow } from "./SalaryStyleComponent";
 import styles from "./Salary.module.css";
 import { JobByCategory } from "./JobCategory";
 import {categories } from "./data";
+import { Navbar } from "../Pages/Navbar";
+import { CheckIcon } from "@chakra-ui/icons";
 
 
 const CompanyInfo = () => {
@@ -49,6 +51,8 @@ const CompanyInfo = () => {
   }, [dispatch]);
 
   return(
+    <>
+    <Navbar/>
     <div className={styles.poster}>
       <img src={poster} alt="poster" />
       <div className={styles.companyInfo}>
@@ -99,8 +103,8 @@ const CompanyInfo = () => {
           <div>
             <h2>{`${name} - Salaries in India`}</h2>
           </div>
-          <div>
-            <button>Add a Salary</button>
+          <div className={styles.claim}>
+             claimed Profile<CheckIcon bg={"green"} borderRadius="50%" color={"white"} marginLeft="3px"/>
           </div>
         </div>
 
@@ -145,6 +149,7 @@ const CompanyInfo = () => {
       </div>
       <JobByCategory category={category} />
     </div>
+    </>
   );
 };
 

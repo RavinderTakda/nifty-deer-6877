@@ -85,7 +85,7 @@ export const Input = styled.input`
 `;
 
 export const SearchButton = styled.button`
-  height:6vh;
+ 
   margin:0.5rem;
   width: 20%;
   border-radius: 10px;

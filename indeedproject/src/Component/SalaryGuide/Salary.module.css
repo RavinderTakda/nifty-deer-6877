@@ -1,6 +1,6 @@
 /* Styling of PageRating.jsx */
 .ratingContainer {
-  /* border: 1px solid rgb(230, 231, 230); */
+  border: 1px solid rgb(230, 231, 230);
   border-radius: 10px;
   padding: 30px;
   position: relative;
@@ -83,10 +83,14 @@
   border: 1px solid #ececec;
 }
 
+
 .starRating {
   display: flex;
   margin-top: 10px;
   gap: 10px;
+  /* border: 1px solid red; */
+  align-items: center;
+  justify-content: space-between;
 }
 
 .starRating p {
@@ -224,7 +228,17 @@
 }
 
 .salaryInfo {
-  position: relative;
+  /* position: relative; */
+  /* border: 1px solid red; */
+  width: 110%;
+}
+.claim{
+  border: 1px solid gray;
+  margin-right: 20px;
+  padding: 12px;
+ font-weight: 600;
+ border-radius: 5px;
+  cursor: pointer;
 }
 
 .salaryInfo > div {
@@ -234,7 +248,8 @@
 }
 
 .salaryInfo div > div {
-  flex-basis: 10vw;
+  flex-basis: 12vw;
+
 }
 .salaryInfo div div:nth-child(1) {
   flex-grow: 1;
