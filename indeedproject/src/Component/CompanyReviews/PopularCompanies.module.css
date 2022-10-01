@@ -1,0 +1,56 @@
+
+
+@media only screen and (min-width:0) and (max-width:400px){
+    .main_copanies{
+  
+        width: 95% !important;
+        margin: auto !important;
+    }
+    .starBox{
+        width: 95% !important;
+        margin-bottom: 10px !important;
+    }
+    .starBox_img{
+        width: 50px !important;
+        margin-top: 35px !important;
+        margin-left: 1px !important;
+    }
+    .rate_text{
+        font-size: 15px !important;
+       
+    }
+    .star{
+        font-size: 15px !important;
+        margin-top: 15px !important;
+    }
+    .popular_companies{
+        font-size: 25px !important;
+        margin-top: 25px;
+        margin-bottom: 15px !important;
+    }
+}
+
+@media only screen and (min-width:400px) and (max-width:800px){
+    .main_copanies{
+       
+        width: 90% !important;
+        margin: auto !important;
+    }
+    .starBox{
+        width: 95% !important;
+        margin-bottom: 10px !important;
+    }
+    .starBox_img{
+        width: 150px !important;
+        margin-top: 35px !important;
+        margin-left: 1px !important;
+    }
+    .rate_text{
+        font-size: 20px !important;
+       
+    }
+    .star{
+        font-size: 25px !important;
+        margin-top: 15px !important;
+    }
+}
