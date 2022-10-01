@@ -39,8 +39,9 @@ export const Navbar = () => {
   const handleLogout=()=>{
     // console.log("hi")
     if(currentUser){
-      navigate("/login")
+      
       dispatch(LogOutUser());
+      navigate("/login")
     }
     else console.log("hi")
   }
