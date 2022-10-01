@@ -8,6 +8,7 @@ import { Searchbox } from '../FindJob/Searchbox'
 import SinglePage from '../CompanyReviews/SinglePage'
 import { CompanyInfo } from '../SalaryGuide/CompanyInfo'
 import Salary from '../SalaryGuide/Salary'
+import { ApplyJobForm } from '../FindJob/ApplyJobForm'
 
 export const Allroutes = () => {
   return (
@@ -21,6 +22,8 @@ export const Allroutes = () => {
           <Route path="/findjob"  element={<Searchbox/>} />
           <Route path="/"  element={<HomePage/>} />
           <Route path='/career/salaries/:id' element={<CompanyInfo/>}/>
+          <Route path='/applyjob' element={<ApplyJobForm/>}/>
+
         </Routes>
     </div>
   )

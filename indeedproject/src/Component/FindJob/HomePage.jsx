@@ -9,14 +9,16 @@
 
 
 import { SearchIcon } from "@chakra-ui/icons";
-import { Button, Container, Flex, Heading, VStack } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, Heading, VStack } from "@chakra-ui/react";
 import React, { useContext } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../Pages/Footer";
 import { Navbar } from "../Pages/Navbar";
 import { SearchTopPayingJobs } from "../Redux/FindJobsReducer/action";
 import { InputSearch } from "./Search";
+import { Searchbox } from "./Searchbox";
 
 
 let tags = [
@@ -35,13 +37,7 @@ let tags = [
 
 
 
- export const handledata = (tag) => {
-
-return tag
-
-
-}
-
+ 
 
 
 
@@ -50,9 +46,26 @@ return tag
  export const HomePage = () => {
 
   const navigate = useNavigate();
-
-
 const dispatch =useDispatch()
+const [homedata,sethomedata] =useState("")
+
+
+
+
+const handledata = (tag) => {
+
+  sethomedata(tag)
+
+  console.log(homedata)
+  
+  
+  }
+  
+
+
+
+
+
 
 
   const searchbyinput = (tag) => {
@@ -71,11 +84,11 @@ const dispatch =useDispatch()
         }
         
             }
-            navigate("/findjob");
-
+            
+           
     dispatch(SearchTopPayingJobs(getBooksParams))
 
-
+    navigate("/findjob");
 
 }
 
@@ -85,6 +98,10 @@ const dispatch =useDispatch()
 
   return (
 <div>
+
+<Box display={"none"}>
+<Searchbox    />
+</Box>
 
   <Navbar/>
 <InputSearch/>

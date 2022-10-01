@@ -1,10 +1,14 @@
 .searchbox{
-   height: 400px;
+   height: 260px;
    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-   width: 85%;
-   border: 1px solid red;
-cursor: pointer;
 
+   /* border: 1px solid red; */
+cursor: pointer;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+margin-top: 30px;
+padding: 20px;
+border: 0.2px solid black;
+border-radius: 8px;
 
 }
 
@@ -12,12 +16,21 @@ cursor: pointer;
 
 .singledata{
 
-   height: 800px;
+   height: 640px;
+margin-right: 200px;
+border: 1px solid rgb(0, 0, 255);
+width: 100%;
+margin-top: 27px;
+padding: 10px;
+border: 0.2px solid black;
+border-radius: 8px;
 
-border: 1px solid red;
-
-
-
+/* position: fixed;
+top: 0px;
+  bottom: 0;
+  right: 0;
+  width: 400px; */
+  border: 3px solid #73AD21;
 }
 
 
@@ -26,7 +39,77 @@ border: 1px solid red;
 .bigdiv{
 
 width: 70%;
-   border: 1px solid black;
+   /* border: 1px solid black; */
    display: flex;
    margin: auto;
+   justify-content: space-between;
+  
 }
+
+
+.pagination{
+
+   width:15%;
+margin: auto;
+margin-top: 20px;
+/* border: 1px solid red; */
+display: flex;
+justify-content: space-around;
+
+
+
+}
+
+
+
+
+
+.uploadresume{
+
+
+display: flex;
+/* border: 1px solid black; */
+align-items: center;
+
+
+}
+
+.uploadresumeinput{
+
+  
+   display: flex;
+   /* border: 1px solid black; */
+   align-items: center;
+   
+   
+   }
+
+   /* .resumeinput{
+width: 30%;
+
+   } */
+
+
+   .resumebox{
+
+width: 30%;
+margin: auto;
+
+
+   }
+
+
+   .text{
+margin-top: 15px;
+color: rgb(30, 0, 255);
+
+   }
+
+
+   .resumebutton{
+
+      margin-top: 15px;
+      border-radius: 5px;
+  
+      color: red;
+   }

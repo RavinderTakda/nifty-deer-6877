@@ -20,7 +20,7 @@ export const SearchJobsReducer = (state = initState, action) => {
 
     const {type,payload} =action
 
-    console.log("dfsdfsdf")
+    // console.log("dfsdfsdf")
   switch (type) {
     case JOBS_SEARCH_REQUEST:
       return {
