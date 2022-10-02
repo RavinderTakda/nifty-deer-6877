@@ -7,7 +7,7 @@ import {
 import Axios from "axios";
 
 export const axios = Axios.create({
-  baseURL: "https://json-server-mocker-robin.herokuapp.com/",
+  baseURL: "https://dry-atoll-17355.herokuapp.com/",
 });
 
 export const companyInfoRequest = () => {
