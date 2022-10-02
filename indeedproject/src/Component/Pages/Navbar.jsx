@@ -39,8 +39,9 @@ export const Navbar = () => {
   const handleLogout=()=>{
     // console.log("hi")
     if(currentUser){
-      navigate("/login")
+      
       dispatch(LogOutUser());
+      navigate("/login")
     }
     else console.log("hi")
   }
@@ -96,7 +97,7 @@ export const Navbar = () => {
                 </MenuButton>
                 <MenuList>
                   <MenuGroup>
-                    <MenuItem>{currentUser.email}</MenuItem>
+                    {/* <MenuItem>{currentUser.email}</MenuItem> */}
                     <MenuItem>My jobs</MenuItem>
                     <MenuItem>My reviews</MenuItem>
                     <MenuDivider />
