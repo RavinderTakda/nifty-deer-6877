@@ -18,6 +18,7 @@ import { Navbar } from "../Pages/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getData } from "../Redux/TitleReducer/action";
+import { Spinner } from "@chakra-ui/react";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -58,13 +59,18 @@ function Salary() {
   const [location,setLocation]=useState("")
    const navigate=useNavigate()
    const dispatch=useDispatch()
+   const [loading,setLoading]=useState(false)
   const handleData=()=>{
+    setLoading(true)
     const data={
        title:title,
        location:location
     }
       dispatch(getData(data))
-      navigate("/findjob")
+      setTimeout(()=>{
+
+        navigate("/findjob")
+      },2000)
   }
 
   return (
@@ -96,7 +102,11 @@ function Salary() {
               <Flex>
                 <Input type="text" value={title}  placeholder="job title"  onChange={(e)=>setTitle(e.target.value)} />
                 <Input type="text" value={location}  placeholder="location" onChange={(e)=>setLocation(e.target.value)} />
-                <SearchButton onClick={handleData}>Search</SearchButton>
+                <SearchButton onClick={handleData}>{loading?<Spinner  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='lg'/>:"Search"}</SearchButton>
               </Flex>
             </SearchDiv>
           </Grid>
