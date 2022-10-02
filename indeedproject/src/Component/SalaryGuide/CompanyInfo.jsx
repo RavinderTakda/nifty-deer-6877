@@ -16,7 +16,6 @@ import { CheckIcon } from "@chakra-ui/icons";
 const CompanyInfo = () => {
   const [category, setCategory] = useState("Popular Jobs");
   const [follow, setFollow] = useState(false);
-//   const history = useHistory();
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.companyInfoReducer.data);
