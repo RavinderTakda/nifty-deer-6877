@@ -1,5 +1,6 @@
 
 import axios from "axios";
+import { useDispatch } from "react-redux";
 import { JOBS_SEARCH_FAILURE, JOBS_SEARCH_REQUEST, JOBS_SEARCH_SUCCESS, SINGLE_JOBS_SEARCH_FAILURE, SINGLE_JOBS_SEARCH_REQUEST, SINGLE_JOBS_SEARCH_SUCCESS } from "./actiontypes";
 
 
@@ -50,6 +51,7 @@ export const singlejobsearchFailure = (err) => {
 
 
 
+
 export const SearchTopPayingJobs = (params) => (dispatch) => {
     // console.log('searchbycity')
   dispatch(jobsearchRequest());
@@ -69,7 +71,7 @@ export const SearchTopPayingJobs = (params) => (dispatch) => {
 
 
 export const SingleFullDataJobs = (params) => (dispatch) => {
-  console.log('searchbycity')
+  // console.log('searchbycity')
 dispatch(singlejobsearchRequest());
 return axios
   .get("https://json-server-999.herokuapp.com/jobs",params)
