@@ -11,11 +11,12 @@ import { Pagination } from "./Pagination"
 import { InputSearch } from "./Search"
 import styles from './Searchbox.module.css';
 import { MdOutlineUploadFile} from 'react-icons/md';
+import { useRef } from "react"
 
  export const Searchbox = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-
- 
+const inputref =useRef()
+ console.log("Inputref",inputref.current)
   const [page,setpage] =useState(1)
 
   const dispatch =useDispatch()
@@ -23,10 +24,12 @@ import { MdOutlineUploadFile} from 'react-icons/md';
 
   const [apply,setapply] =useState(true)
   const [count,setcount] =useState(true)
+  const [valid,setvalid] =useState(false)
   
 
 
 const data =useSelector(state=>state.SearchJobsReducer.data)
+
 
 // console.log(data)
 
@@ -42,7 +45,16 @@ console.log("singledata",singledata)
 
 
 
+const handleinputref = () => {
 
+
+  if(inputref.current===null){
+    inputref.current.focus()
+  }
+
+
+
+}
 
 
 
@@ -219,25 +231,29 @@ return(
   
     <Button   marginTop={"5px"} onClick={()=>{
   
-  {apply?onOpen():onclose()}
+  // {apply?onOpen():onclose()}
+  onOpen()
   
   
-    }} backgroundColor="blue" color="white">{apply?"Apply Now":"Applied"}</Button>
+    }} backgroundColor="blue" color="white">Apply Now</Button>
   
-  
+ 
         <Modal
   
     isOpen={isOpen}
     onClose={onClose}
   >
     <ModalOverlay />
+   
     <ModalContent>
       <ModalHeader>Add your contact information</ModalHeader>
       <ModalCloseButton />
+    
       <ModalBody pb={6}>
+      
         <FormControl>
           <FormLabel>First name</FormLabel>
-          <Input  placeholder='First name' />
+          <Input     ref={inputref}  placeholder='First name' />
         </FormControl>
   
         <FormControl mt={4}>
@@ -274,6 +290,7 @@ return(
     </InputGroup>
         </Box>
       </FormControl>
+      
   
       
   
@@ -284,18 +301,26 @@ return(
   
       <ModalFooter>
         <Button onClick={()=>{
+
+          handleinputref()
           setapply(false)
   
-  onClose()
+         onClose()
+         
   
         }} colorScheme='blue' mr={3}>
+
+
+
           Submit
         </Button>
         <Button onClick={onClose}>Cancel</Button>
+        
       </ModalFooter>
     </ModalContent>
+    
   </Modal>
-  
+
     
     </Box>
     <Box
