@@ -1,6 +1,6 @@
 
 import * as types from "./actionTypes"
-import {auth} from "../../../Firebase"
+import {auth,googleAuthProvider} from "../../../Firebase"
 
 
 const registerRequest =()=>{
@@ -62,6 +62,27 @@ export const setUser=(user)=>({
     payload:user,
 })
 
+const GoogleRequest =()=>{
+    return{
+        type:types.GOOGLE_SIGN_IN_REQUEST
+    }
+}
+const GoogleSuccess =(user)=>{
+    return{
+        type:types.GOOGLE_SIGN_IN_SUCCESS,
+        payload:user
+    }
+}
+const GoogleFail =(err)=>{
+    return{
+        type:types.GOOGLE_SIGN_IN_FAILURE,
+        payload:err
+    }
+}
+
+
+
+
 export const RegisterUser=(email,password,displayName)=>{
     return function(dispatch){
         dispatch(registerRequest());
@@ -78,6 +99,7 @@ export const RegisterUser=(email,password,displayName)=>{
 } 
 
 export const LoginUser=(email,password)=>{
+    console.log(email,password)
     return function(dispatch){
         dispatch(loginRequest());
         auth
@@ -98,5 +120,18 @@ export const LogOutUser=()=>{
             dispatch(logOutSuccess());
         })
         .catch((error)=>dispatch(logOutFail(error.message)))
+    }
+} 
+
+
+export const GoogleSignIn=()=>{
+    return function(dispatch){
+        dispatch(GoogleRequest());
+        auth
+        .signInWithPopup(googleAuthProvider)
+        .then(({user})=>{
+            dispatch(GoogleSuccess(user));
+        })
+        .catch((error)=>dispatch(GoogleFail(error.message)))
     }
 } 

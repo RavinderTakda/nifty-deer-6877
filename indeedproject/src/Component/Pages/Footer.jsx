@@ -19,9 +19,15 @@ const link2 = [
   "Privacy",
 ];
 
+const Footerstyle={
+  position:"absolute",
+   
+
+}
+
 export const Footer = () => {
   return (
-    <Container
+    <Container  style={Footerstyle}
       maxW={"100vw"}
       my="5"
       borderTop="2px solid gainsboro"

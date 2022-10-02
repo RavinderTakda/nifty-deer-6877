@@ -17,7 +17,7 @@ import {
   import { BsFacebook, BsApple } from "react-icons/bs";
   import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { LoginUser } from "../Redux/Authentication/action";
+import { GoogleSignIn, LoginUser } from "../Redux/Authentication/action";
 
 
 
@@ -25,35 +25,47 @@ import { LoginUser } from "../Redux/Authentication/action";
 export const Login = () => {
     const [state, setState] = useState({
       email: "",
-      pass: "",
+      password: "",
     });
-    const {email,password} = state;
+    
 
     const {currentUser}= useSelector((state)=>state.user)
+  
     const dispatch= useDispatch()
     const navigate = useNavigate();
 
    
     useEffect(()=>{
-      if(currentUser){
-        navigate("/")
+      console.log(currentUser)
+      
+      if (currentUser) {
+        navigate("/");
       }
-    },[currentUser])
+     
+      // if(currentUser){
+      //   navigate("/")
+      // }
+    },[currentUser,navigate])
   
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      if(!email || !password){
-        alert("Fill all blanks")
-        return;
-      }
+    const handleSubmit = () => {
+      const {email,password} = state;
+      // e.preventDefault();
+      // if(!email || !password){
+      //   alert("Fill all blanks")
+      //   return;
+      // }
       dispatch(LoginUser(email,password))
-      setState({email:"", password:""})
+      // setState({email:"", password:""})
+      navigate("/")
     };
 
-    const handleGoogleSignIn=()=>{};
+    const handleGoogleSignIn=()=>{
+      dispatch(GoogleSignIn())
+     
+    };
 
     const handleChange=(e)=>{
-      var {name,value}= e.target;
+      const {name,value}= e.target;
       setState({...state,[name]:value})
     };
 
@@ -99,7 +111,7 @@ export const Login = () => {
             justifyContent="space-between"
             rightIcon={<div />}
             onClick={handleGoogleSignIn}
-            navigate="/"
+            // navigate="/"
           >
             Continue with Google
           </Button>
@@ -135,7 +147,7 @@ export const Login = () => {
                 type={"email"}
                 id="inputEmail"
                 name="email"
-                value={email}
+                // value={email}
                 _focus={{
                   borderColor: "rgb(37, 87, 167)",
                   boxShadow: "rgb(37 87 167) 0px -3px 0px 0px inset",
@@ -154,7 +166,7 @@ export const Login = () => {
                 type={"password"}
                 id="inputPassword"
                 name="password"
-                value={password}
+                // value={password}
                 _focus={{
                   borderColor: "rgb(37, 87, 167)",
                   boxShadow: "rgb(37 87 167) 0px -3px 0px 0px inset",
