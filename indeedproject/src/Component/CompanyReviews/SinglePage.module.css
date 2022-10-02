@@ -23,6 +23,20 @@
   width: 100%;
   height: 170px;
 }
+.name_Box1{
+  background-color:rgb(20, 105, 122);
+  color: rgb(246, 235, 235);
+}
+.name_Box1:hover{
+  background-color:rgb(82, 160, 176);
+}
+.name_Box2{
+  background-color:rgb(20, 105, 122);
+  color: rgb(246, 235, 235);
+}
+.name_Box2:hover{
+  background-color:rgb(82, 160, 176);
+}
 
 
 @media only screen and (min-width: 0) and (max-width: 400px) {

@@ -16,8 +16,10 @@ import {
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import styled from "@emotion/styled";
+import MiniFooter from "./MiniFooter";
 
 const SinglePage = () => {
+  const [toggle,setToggle]=useState(true);
   const [data, setData] = useState({});
   const dispatch = useDispatch();
 
@@ -76,8 +78,8 @@ const SinglePage = () => {
           </Box>
           <Spacer></Spacer>
           <Box mt={6}>
-            <Button variant="solid" color="white" colorScheme="blue" w="200px">
-              follow
+            <Button variant="solid" color="white" colorScheme="blue" w="200px" onClick={()=>setToggle(!toggle)}>
+              {toggle ?"follow":"unfollow"}
             </Button>
             <Button border="1px solid black " color="blue" w="200px" ml="3">
               write a review
@@ -146,10 +148,10 @@ const SinglePage = () => {
                 borderRadius={10}
                 className={style.name_Box1}
               >
-                <Text fontSize="xl" ml={3} mt={5}>
+                <Text fontSize="xl"  mt={5} textAlign='center'>
                   CEO
                 </Text>
-                <Text fontSize="xl" ml={3} mt={2}>
+                <Text fontSize="xl"  mt={2} textAlign='center'>
                   {" "}
                   {companies[`${id - 1}`].ceo_name}
                 </Text>
@@ -162,10 +164,10 @@ const SinglePage = () => {
                 borderRadius={10}
                 className={style.name_Box1}
               >
-                <Text fontSize="xl" ml={3} mt={5}>
+                <Text fontSize="xl"  mt={5} textAlign='center'>
                   Founded
                 </Text>
-                <Text fontSize="xl" ml={3} mt={2}>
+                <Text fontSize="xl"  mt={2} textAlign='center'>
                   {" "}
                   {companies[`${id - 1}`].founded_year}
                 </Text>
@@ -177,11 +179,12 @@ const SinglePage = () => {
                 h="150px"
                 border="1px solid black"
                 borderRadius={10}
+                className={style.name_Box2}
               >
-                <Text fontSize="xl" ml={3} mt={5}>
+                <Text fontSize="xl" textAlign='center' mt={5}>
                   Revenue
                 </Text>
-                <Text fontSize="xl" ml={3} mt={2}>
+                <Text fontSize="xl" textAlign='center' mt={2}>
                   {" "}
                   {companies[`${id - 1}`].revenue}
                 </Text>
@@ -192,11 +195,12 @@ const SinglePage = () => {
                 border="1px solid black"
                 ml={20}
                 borderRadius={10}
+                className={style.name_Box2}
               >
-                <Text fontSize="xl" ml={3} mt={5}>
+                <Text fontSize="xl" textAlign='center' mt={5}>
                   Company size
                 </Text>
-                <Text fontSize="xl" ml={3} mt={2}>
+                <Text fontSize="xl" textAlign='center' mt={2}>
                   {" "}
                   {companies[`${id - 1}`].company_size}
                 </Text>
@@ -209,6 +213,39 @@ const SinglePage = () => {
           <Text>{companies[`${id - 1}`].description}</Text>
         </Box>
       </Box>
+      <Box
+        w="60%"
+        height="100px"
+        border="1px solid white"
+        m="auto"
+        mt="20"
+        bg="rgb(245,251,249)"
+        className={style.starBox}
+      >
+         <Flex>
+          <Box>
+            <Image className={style.starBox_img} w='120px' ml={130} mt={5} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNQHNkQGtGVMDlyJNseTRWYPRcask7p2sFCg&usqp=CAU"/>
+          </Box>
+        <Box mt={30} >
+         
+        <Text textAlign="center" fontSize="24px" as='b' className={style.rate_text}>
+          Rate your recent company:
+        </Text>
+        </Box>
+        <Box display="flex" mt="5" ml={3} alignItems="center" >
+          {new Array(5).fill("").map((_, i) => (
+            <StarIcon fontSize='25px' className={style.star}
+              key={i}
+              color={i < companies.rating ? "teal.500" : "orange.700"}
+            />
+          ))}
+          <Box as="span" ml="2" color="gray.600" fontSize="sm" >
+            {companies.reviewCount} 
+          </Box>
+        </Box>
+        </Flex>
+      </Box>
+      <MiniFooter/>
     </>
   );
 };
