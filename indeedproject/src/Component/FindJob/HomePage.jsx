@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { Footer } from "../Pages/Footer";
 import { Navbar } from "../Pages/Navbar";
 import { SearchTopPayingJobs } from "../Redux/FindJobsReducer/action";
+import { getData } from "../Redux/TitleReducer/action";
 import { InputSearch } from "./Search";
 import { Searchbox } from "./Searchbox";
 
@@ -54,11 +55,18 @@ const [homedata,sethomedata] =useState("")
 
 const handledata = (tag) => {
 
-  sethomedata(tag)
+  let payload ={
 
-  console.log(homedata)
+title:tag
+
+
+  }
+
+  dispatch(getData(payload))
   
   
+  navigate("/findjob");
+
   }
   
 
@@ -68,29 +76,29 @@ const handledata = (tag) => {
 
 
 
-  const searchbyinput = (tag) => {
+//   const searchbyinput = (tag) => {
 
    
      
-    let getBooksParams ={
+//     let getBooksParams ={
 
-        params:{
+//         params:{
           
-          _page:1,
-          _limit:5,
-            q:tag,
+//           _page:1,
+//           _limit:5,
+//             q:tag,
           
            
-        }
+//         }
         
-            }
+//             }
             
            
-    dispatch(SearchTopPayingJobs(getBooksParams))
+//     dispatch(SearchTopPayingJobs(getBooksParams))
 
-    navigate("/findjob");
+//     navigate("/findjob");
 
-}
+// }
 
 
 
@@ -125,7 +133,7 @@ const handledata = (tag) => {
 
 handledata(tag)
 
-searchbyinput(tag)
+// searchbyinput(tag)
                   
                 }}
               >

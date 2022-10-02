@@ -1,12 +1,19 @@
 import { SearchIcon } from "@chakra-ui/icons"
 import { Box, Button, Input, InputGroup, InputLeftAddon, InputRightElement } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Navigate, useNavigate, useSearchParams } from "react-router-dom"
 import { SearchTopPayingJobs, SingleFullDataJobs } from "../Redux/FindJobsReducer/action"
+import { getData } from "../Redux/TitleReducer/action"
+import {MdLocationPin} from 'react-icons/md';
 
 import styles from './Searchbox.module.css';
  export const InputSearch = ({page}) => {
+  const title=useSelector(state=>state.TitleReducer.what)
+  const location=useSelector(state=>state.TitleReducer.where)
+
+  
+  
 
   const navigate =useNavigate()
 
@@ -15,11 +22,11 @@ import styles from './Searchbox.module.css';
 
 
   const initialjobtitle = searchparams.getAll("q")
-  console.log(initialjobtitle)
+  // console.log(initialjobtitle)
 
 const [what,setWhat] =useState(initialjobtitle || "")
 
-console.log("what",what)
+// console.log("what",what)
 
 
 
@@ -36,6 +43,17 @@ console.log("what",what)
 
   const searchbyinput = (e) => {
 
+
+    let payload= {
+title:what,
+location:city
+
+    }
+
+// console.log("payload",payload)
+    dispatch(getData(payload))
+
+
     
      
       let getBooksParams ={
@@ -44,8 +62,8 @@ console.log("what",what)
           
           _page:page,
           _limit:5,
-            q:what,
-            city:city
+            q:title,
+            city:location
            
         }
         
@@ -71,11 +89,11 @@ useEffect(()=>{
     
     setsearchparams(params)
 
-    searchbyinput()
+searchbyinput()
 
 
 
-},[page,setsearchparams,what,city])
+},[page,setsearchparams])
 
 
 
@@ -97,6 +115,7 @@ return(
 
 <InputGroup>
   <InputLeftAddon children='Where' />
+  <InputRightElement children={<MdLocationPin/>}/>
   <Input  onChange={(e)=>setcity(e.target.value)} type='text'  placeholder='City, State or pin code'  width="81%"  />
 </InputGroup>
 
