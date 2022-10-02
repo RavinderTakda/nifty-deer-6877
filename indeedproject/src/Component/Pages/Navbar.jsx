@@ -97,7 +97,7 @@ export const Navbar = () => {
                 </MenuButton>
                 <MenuList>
                   <MenuGroup>
-                    <MenuItem>{currentUser.email}</MenuItem>
+                    {/* <MenuItem>{currentUser.email}</MenuItem> */}
                     <MenuItem>My jobs</MenuItem>
                     <MenuItem>My reviews</MenuItem>
                     <MenuDivider />

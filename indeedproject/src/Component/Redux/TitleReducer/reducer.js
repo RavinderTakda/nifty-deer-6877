@@ -9,6 +9,7 @@ const init={
 
 const TitleReducer=(state=init,action)=>{
     const {type,payload}=action
+ 
     switch(type){
         case GET_WHAT_SUCESS:
             return {...state,where:payload.location,what:payload.title}
