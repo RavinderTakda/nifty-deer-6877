@@ -16,7 +16,7 @@ import { MdOutlineUploadFile} from 'react-icons/md';
   const { isOpen, onOpen, onClose } = useDisclosure()
   const title=useSelector(state=>state.TitleReducer.what)
   const location=useSelector(state=>state.TitleReducer.where)
-   console.log(title,location);
+  //  console.log(title,location);
   const [page,setpage] =useState(1)
 
   const dispatch =useDispatch()
@@ -27,7 +27,7 @@ import { MdOutlineUploadFile} from 'react-icons/md';
 
 
 const data =useSelector(state=>state.SearchJobsReducer.data)
-console.log(data)
+// console.log(data)
 const singledata =useSelector(state=>state.SearchJobsReducer.singledata)
 // console.log("data",data)
 // console.log("singledata",singledata)

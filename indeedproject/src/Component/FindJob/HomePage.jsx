@@ -66,7 +66,7 @@ export const HomePage = () => {
 
       <Container maxW="container.lg" my={5}>
         <VStack>
-          <Heading fontSize={20}>Popupler Searches</Heading>
+          <Heading fontSize={20}>Popular Searches</Heading>
           <Flex flexWrap={"wrap"} justifyContent="center" gap={4} p={5}>
             {tags.map((tag) => {
               return (

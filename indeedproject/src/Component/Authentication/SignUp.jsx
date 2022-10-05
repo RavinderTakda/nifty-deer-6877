@@ -1,6 +1,4 @@
 import {
-  Alert,
-  AlertTitle,
   Button,
   Container,
   FormControl,
@@ -11,59 +9,107 @@ import {
   VStack,
   Box,
   Image,
+  useToast,
+  Link,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { StarIcon } from "@chakra-ui/icons";
 import { ImArrowRight2 } from "react-icons/im";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook, BsApple } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { GoogleSignIn, RegisterUser } from "../Redux/Authentication/action";
+import { useDispatch } from "react-redux";
+import { GoogleSignIn,SignUp } from "../Redux/Authentication/action";
+import * as types from "../Redux/Authentication/actionTypes"
 
-export const SignUp = () => {
- 
-  const [state, setState] = useState({
-    email: "",
-    password: "",
-  });
-
-  const { currentUser } = useSelector((state) => state.user);
+export const SignUpUser = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const toast = useToast();
   const navigate = useNavigate();
 
- 
-
-  useEffect(() => {
-    const { email, password } = state;
-    if (!email && !password && currentUser) {
-      navigate("/");
+  const submitUser = async (e) => {
+    e.preventDefault();
+    if (email === "" || password === "") {
+      toast({
+        title: `All details must be filled out!`,
+        status: "error",
+        position: "top",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else {
+      dispatch(SignUp(email, password))
+        .then((userCredential) => {
+          const userDetails = userCredential.user;
+          toast({
+            title: `Your account has been created,your current email is ${userDetails.email}  `,
+            status: "success",
+            position: "top",
+            duration: 3000,
+            isClosable: true,
+          });
+          navigate("/login");
+          return dispatch({
+            type: types.USER_SIGNUP_SUCCESS,
+            payload: userDetails.email,
+          });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          toast({
+            title: `${errorMessage}  `,
+            status: "error",
+            position: "top",
+            duration: 3000,
+            isClosable: true,
+          });
+          return dispatch({
+            type: types.USER_SIGNUP_FAILURE,
+            payload: errorMessage,
+          });
+        });
     }
-    else if(currentUser){
-      navigate("/login")
-    }
-  }, [currentUser, navigate]);
-
-  const handleSubmit = () => {
-    const { email, password } = state;
-    // e.preventDefault();
-    if (!email && !password) {
-      alert("Fill all blanks");
-      return;
-    }
-    dispatch(RegisterUser(email, password));
-    // setState({ email: "", password: "" });
-    // navigate("/login")
   };
-  const handleGoogleSignIn = () => {
-    dispatch(GoogleSignIn());
-  
-  };
 
-  const handleChange = (e) => {
-    var { name, value } = e.target;
-    setState({ ...state, [name]: value });
-    // navigate("/login");
+  const signInWithGoogle = async () => {
+    dispatch(GoogleSignIn())
+      .then((userCredential) => {
+        // Signed in
+        const userDetails = userCredential.user;
+        console.log(userDetails);
+        toast({
+          title: `Your Successfully Logged in,your current email is ${userDetails.email}  `,
+          status: "success",
+          position: "top",
+          duration: 3000,
+          isClosable: true,
+        });
+        navigate("/");
+        return dispatch({
+          type: types.USER_LOGIN_SUCCESS,
+          payload: userDetails.email,
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        toast({
+          title: `${errorMessage}  `,
+          status: "error",
+          position: "top",
+          duration: 3000,
+          isClosable: true,
+        });
+        return dispatch({
+          type: types.USER_LOGIN_FAILURE,
+          payload: errorMessage,
+        });
+      });
   };
 
   return (
@@ -105,7 +151,7 @@ export const SignUp = () => {
               variant={"outline"}
               justifyContent="space-between"
               rightIcon={<div />}
-              onClick={handleGoogleSignIn}
+              onClick={signInWithGoogle}
               // navigate="/login"
             >
               Continue with Google
@@ -129,45 +175,44 @@ export const SignUp = () => {
             >
               Continue with Facebook
             </Button>
-            <form>
-              <FormControl>
-                <Text>
-                  <b>
-                    Email address <StarIcon w="2" mt={-3} color="red.500" />
-                  </b>
-                </Text>
-                <Input
-                  placeholder="Enter email address"
-                  size="md"
-                  type={"email"}
-                  name="email"
-                  // value={email}
-                  _focus={{
-                    borderColor: "rgb(37, 87, 167)",
-                    boxShadow: "rgb(37 87 167) 0px -3px 0px 0px inset",
-                  }}
-                  onChange={handleChange}
-                  required
-                />
-                <Text>
-                  <b>
-                    Password <StarIcon w="2" mt={-3} color="red.500" />
-                  </b>
-                </Text>
-                <Input
-                  placeholder="Enter password"
-                  size="md"
-                  type={"password"}
-                  name="password"
-                  // value={password}
-                  _focus={{
-                    borderColor: "rgb(37, 87, 167)",
-                    boxShadow: "rgb(37 87 167) 0px -3px 0px 0px inset",
-                  }}
-                  onChange={handleChange}
-                  required
-                />
-              </FormControl>
+
+            <FormControl onSubmit={submitUser}>
+              <Text>
+                <b>
+                  Email address <StarIcon w="2" mt={-3} color="red.500" />
+                </b>
+              </Text>
+              <Input
+                placeholder="Enter email address"
+                size="md"
+                type={"email"}
+                name="email"
+                value={email}
+                _focus={{
+                  borderColor: "rgb(37, 87, 167)",
+                  boxShadow: "rgb(37 87 167) 0px -3px 0px 0px inset",
+                }}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <Text>
+                <b>
+                  Password <StarIcon w="2" mt={-3} color="red.500" />
+                </b>
+              </Text>
+              <Input
+                placeholder="Enter password"
+                size="md"
+                type={"password"}
+                name="password"
+                value={password}
+                _focus={{
+                  borderColor: "rgb(37, 87, 167)",
+                  boxShadow: "rgb(37 87 167) 0px -3px 0px 0px inset",
+                }}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
 
               <Button
                 w="100%"
@@ -176,11 +221,24 @@ export const SignUp = () => {
                 colorScheme="facebook"
                 fontWeight={"bold"}
                 rightIcon={<ImArrowRight2 />}
-                onClick={handleSubmit}
+                onClick={submitUser}
               >
                 Continue
               </Button>
-            </form>
+
+              <Text>
+                Already have an account?
+                <Link to="/login">
+                  <Text
+                    display="inline"
+                    borderBottom="1px solid black"
+                    _hover={{ color: "blue", borderBottom: "1px solid blue" }}
+                  >
+                    Log in
+                  </Text>
+                </Link>
+              </Text>
+            </FormControl>
           </VStack>
         </Container>
       </Box>

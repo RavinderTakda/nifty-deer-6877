@@ -21,6 +21,7 @@ const link2 = [
 
 const Footerstyle={
   position:"absolute",
+  // top:"500px"
    
 
 }

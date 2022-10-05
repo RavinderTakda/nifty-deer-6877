@@ -11,42 +11,37 @@ import {
   MenuGroup,
   MenuItem,
   MenuList,
-  Center,
+
 } from "@chakra-ui/react";
 import { BsFillChatLeftTextFill } from "react-icons/bs";
 import { FaBell } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { LogOutUser } from "../Redux/Authentication/action";
+import { LogOut } from "../Redux/Authentication/action";
 import { SignupButton } from "./SignupButton";
-import { useEffect, useState } from "react";
+
+import * as types from "../Redux/Authentication/actionTypes"
 
 export const Navbar = () => {
-  const { currentUser } = useSelector((state) => state.user);
-  const [email,setEmail]=useState()
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/");
-  };
-  const handleLogout = () => {
-    if (currentUser) {
-      console.log("logged out");
-      dispatch(LogOutUser());
+  const {userDetails} = useSelector((state) => state.user);
+
+  
+
+
+  const signOutBtn = () => {
+    dispatch(LogOut()).then((r) => {
+      dispatch({ type: types.USER_LOGIN_FAILURE });
       navigate("/");
-    } else {
-      console.log("log not out");
-      navigate("/login");
-    }
+    });
   };
 
-    //  useEffect(()=>{
-    //   if(currentUser){
-    //     setEmail(currentUser.email)
-    //   }
-    //  },[])
+
+
+ 
+
 
   return (
     <div>
@@ -87,19 +82,17 @@ export const Navbar = () => {
               <FaBell />
             </Box>
             <Box py={2}>
-              {currentUser?.email? <Menu onClick={handleClick}>
-                {/* {currentUser ? <CgProfile /> : <SignupButton />} */}
+              {userDetails?.email? <Menu>
                 <MenuButton as={Button} >
-                {/* backgroundColor={"white"}               */}
                 <CgProfile/>
                 </MenuButton>
                 <MenuList>
                   <MenuGroup>
-                    <MenuItem>{currentUser?.email}</MenuItem>
+                    <MenuItem>{userDetails?.email}</MenuItem>
                     <MenuItem>My jobs</MenuItem>
                     <MenuItem>My reviews</MenuItem>
                     <MenuDivider />
-                    <MenuItem onClick={handleLogout}>Sign Out</MenuItem>
+                    <MenuItem onClick={signOutBtn}>Sign Out</MenuItem>
                   </MenuGroup>
                 </MenuList>
               </Menu>:<SignupButton/>}

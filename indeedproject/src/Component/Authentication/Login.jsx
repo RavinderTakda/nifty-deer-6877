@@ -8,7 +8,8 @@ import {
     Text,
     VStack,
     Image,
-    Box
+    Box,
+    useToast
   } from "@chakra-ui/react";
   import React, { useEffect, useState } from "react";
   import { StarIcon } from "@chakra-ui/icons";
@@ -16,60 +17,105 @@ import {
   import { FcGoogle } from "react-icons/fc";
   import { BsFacebook, BsApple } from "react-icons/bs";
   import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { GoogleSignIn, LoginUser } from "../Redux/Authentication/action";
+import { useDispatch, } from "react-redux";
+import { GoogleSignIn, login, passwordReset,  } from "../Redux/Authentication/action";
+import * as types from "../Redux/Authentication/actionTypes"
 
 
 
 
-export const Login = () => {
-    const [state, setState] = useState({
-      email: "",
-      password: "",
-    });
-    
 
-    const {currentUser}= useSelector((state)=>state.user)
+export const LoginUser = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const navigate = useNavigate();
+
+
   
-    const dispatch= useDispatch()
-    const navigate = useNavigate();
-
-   
-    useEffect(()=>{
-      console.log(currentUser)
-      
-      if (currentUser) {
+  const HandleSubmit = () => {
+    if (email === "" || password === "") {
+      toast({
+        title: `All details must be filled out!`,
+        status: "error",
+        position: "top",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else {
+      dispatch(login(email, password))
+        .then((userCredential) => {
+          // Signed in
+          const userDetails = userCredential.user;
+          console.log(userDetails.email);
+          toast({
+            title: `Your Successfully Logged in,your current email is ${userDetails.email}  `,
+            status: "success",
+            position: "top",
+            duration: 3000,
+            isClosable: true,
+          });
+          navigate("/");
+          return dispatch({
+            type: types.USER_LOGIN_SUCCESS,
+            payload: userDetails.email,
+          });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          toast({
+            title: `${errorMessage}  `,
+            status: "error",
+            position: "top",
+            duration: 3000,
+            isClosable: true,
+          });
+          return dispatch({
+            type: types.USER_LOGIN_FAILURE,
+            payload: errorMessage,
+          });
+        });
+    }
+  };
+  const signInWithGoogle = async () => {
+    dispatch(GoogleSignIn())
+      .then((userCredential) => {
+        // Signed in
+        const userDetails = userCredential.user;
+        console.log(userDetails);
+        toast({
+          title: `Your Successfully Logged in,your current email is ${userDetails.email}  `,
+          status: "success",
+          position: "top",
+          duration: 3000,
+          isClosable: true,
+        });
         navigate("/");
-      }
-     
-      // if(currentUser){
-      //   navigate("/")
-      // }
-    },[currentUser,navigate])
-  
-    const handleSubmit = () => {
-      const {email,password} = state;
-      // e.preventDefault();
-      // if(!email || !password){
-      //   alert("Fill all blanks")
-      //   return;
-      // }
-      dispatch(LoginUser(email,password))
-      // setState({email:"", password:""})
-      navigate("/")
-    };
-
-    const handleGoogleSignIn=()=>{
-      dispatch(GoogleSignIn())
-     
-    };
-
-    const handleChange=(e)=>{
-      const {name,value}= e.target;
-      setState({...state,[name]:value})
-    };
-
- 
+        return dispatch({
+          type: types.USER_LOGIN_SUCCESS,
+          payload: userDetails.email,
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        toast({
+          title: `${errorMessage}  `,
+          status: "error",
+          position: "top",
+          duration: 3000,
+          isClosable: true,
+        });
+        return dispatch({
+          type: types.USER_LOGIN_FAILURE,
+          payload: errorMessage,
+        });
+      });
+  };
   return (
     <div>
       <Box bg={"#FFFAF0"}>
@@ -110,7 +156,7 @@ export const Login = () => {
             variant={"outline"}
             justifyContent="space-between"
             rightIcon={<div />}
-            onClick={handleGoogleSignIn}
+            onClick={signInWithGoogle}
             // navigate="/"
           >
             Continue with Google
@@ -134,7 +180,6 @@ export const Login = () => {
           >
             Continue with Facebook
           </Button>
-          <form>
             <FormControl>
               <Text>
                 <b>
@@ -145,14 +190,13 @@ export const Login = () => {
                 placeholder="Enter email address"
                 size="md"
                 type={"email"}
-                id="inputEmail"
                 name="email"
-                // value={email}
+                value={email}
                 _focus={{
                   borderColor: "rgb(37, 87, 167)",
                   boxShadow: "rgb(37 87 167) 0px -3px 0px 0px inset",
                 }}
-                onChange={handleChange}
+                onChange={(e)=> setEmail(e.target.value)}
                 required
               />
               <Text>
@@ -164,14 +208,13 @@ export const Login = () => {
                 placeholder="Enter password"
                 size="md"
                 type={"password"}
-                id="inputPassword"
                 name="password"
-                // value={password}
+                value={password}
                 _focus={{
                   borderColor: "rgb(37, 87, 167)",
                   boxShadow: "rgb(37 87 167) 0px -3px 0px 0px inset",
                 }}
-                onChange={handleChange}
+                onChange={(e)=> setPassword(e.target.value)}
                 required
               />
             </FormControl>
@@ -183,7 +226,7 @@ export const Login = () => {
               colorScheme="facebook"
               fontWeight={"bold"}
               rightIcon={<ImArrowRight2 />}
-              onClick={handleSubmit}
+              onClick={HandleSubmit}
               // disabled={submitButtonDisable}
               
               //   isLoading={state.isLoading ? "YES" : ""}
@@ -192,8 +235,8 @@ export const Login = () => {
               Continue
             </Button>
             <p>Don't have the account </p>
-            <Link to={"/signup"}>Create an aaccount </Link>
-          </form>
+            <Link to={"/signup"}>Create an account </Link>
+          
         </VStack>
       </Container>
       </Box>

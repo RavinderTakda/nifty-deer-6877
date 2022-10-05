@@ -22,11 +22,11 @@ export const InputSearch = ({ page }) => {
   const [searchparams, setsearchparams] = useSearchParams();
 
   const initialjobtitle = searchparams.getAll("q");
-  console.log(initialjobtitle);
+  // console.log(initialjobtitle);
 
   const [what, setWhat] = useState(initialjobtitle || "");
 
-  console.log("what", what);
+  // console.log("what", what);
 
   const [jobtitle, setjobtitle] = useState("");
 
