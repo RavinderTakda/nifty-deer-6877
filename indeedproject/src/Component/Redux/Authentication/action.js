@@ -18,9 +18,6 @@ export const LogOut= (payload)=> dispatch=>{
     return signOut(auth)
 }
 
-export const passwordReset=(email)=>dispatch=>{
-    return sendPasswordResetEmail(auth,email);
-}
 
 export const setUser=(user)=>({
     type:types.SET_USER,

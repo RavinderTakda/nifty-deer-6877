@@ -21,8 +21,6 @@ const link2 = [
 
 const Footerstyle={
   position:"absolute",
-  // top:"500px"
-   
 
 }
 
@@ -31,6 +29,7 @@ export const Footer = () => {
     <Container  style={Footerstyle}
       maxW={"100vw"}
       my="5"
+     
       borderTop="2px solid gainsboro"
       fontSize={"0.9rem"}
     >

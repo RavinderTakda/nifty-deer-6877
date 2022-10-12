@@ -6,17 +6,17 @@ import { MainCom } from "./Component/Pages/MainCom";
 import { auth } from "./Firebase";
 import { setUser } from "./Component/Redux/Authentication/action";
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(()=>{
-    auth.onAuthStateChanged((authUser)=>{
-      if(authUser){
-        dispatch(setUser(authUser));
-      }else{
-        dispatch(setUser(null));
-      }
-    })
-  },[dispatch])
+  // useEffect(()=>{
+  //   auth.onAuthStateChanged((authUser)=>{
+  //     if(authUser){
+  //       dispatch(setUser(authUser));
+  //     }else{
+  //       dispatch(setUser(null));
+  //     }
+  //   })
+  // },[dispatch])
 
   return (
     <div>

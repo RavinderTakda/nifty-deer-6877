@@ -56,7 +56,7 @@ export const HomePage = () => {
   };
 
   return (
-    <div>
+    <>
       <Box display={"none"}>
         <Searchbox />
       </Box>
@@ -64,7 +64,7 @@ export const HomePage = () => {
       <Navbar />
       <InputSearch />
 
-      <Container maxW="container.lg" my={5}>
+      <Container maxW="container.lg" my={5} h={"43vh"} >
         <VStack>
           <Heading fontSize={20}>Popular Searches</Heading>
           <Flex flexWrap={"wrap"} justifyContent="center" gap={4} p={5}>
@@ -94,6 +94,6 @@ export const HomePage = () => {
       </Container>
 
       <Footer />
-    </div>
+    </>
   );
 };

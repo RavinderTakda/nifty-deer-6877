@@ -11,14 +11,14 @@ import {
     Box,
     useToast
   } from "@chakra-ui/react";
-  import React, { useEffect, useState } from "react";
+  import React, { useState } from "react";
   import { StarIcon } from "@chakra-ui/icons";
   import { ImArrowRight2 } from "react-icons/im";
   import { FcGoogle } from "react-icons/fc";
   import { BsFacebook, BsApple } from "react-icons/bs";
   import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, } from "react-redux";
-import { GoogleSignIn, login, passwordReset,  } from "../Redux/Authentication/action";
+import { GoogleSignIn, login,   } from "../Redux/Authentication/action";
 import * as types from "../Redux/Authentication/actionTypes"
 
 
@@ -48,7 +48,7 @@ export const LoginUser = () => {
         .then((userCredential) => {
           // Signed in
           const userDetails = userCredential.user;
-          console.log(userDetails.email);
+          console.log(userDetails);
           toast({
             title: `Your Successfully Logged in,your current email is ${userDetails.email}  `,
             status: "success",
@@ -85,7 +85,7 @@ export const LoginUser = () => {
       .then((userCredential) => {
         // Signed in
         const userDetails = userCredential.user;
-        console.log(userDetails);
+        console.log(userDetails.email);
         toast({
           title: `Your Successfully Logged in,your current email is ${userDetails.email}  `,
           status: "success",
