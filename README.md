@@ -9,10 +9,10 @@ Indeed is an worldwide employment website for job listings. With Indeed, you can
 <li>Material UI</li>
 
 <h3>Take a look </h3>
-![Indeed App (4)](https://user-images.githubusercontent.com/70228714/195925615-c230d9ef-0cea-46c9-a445-9bc56cf4e223.png)
-![Indeed App](https://user-images.githubusercontent.com/70228714/195925798-abaa1370-7d28-4e1e-8fa6-2c8fac58a95a.png)
 
-![Indeed App (3) (1)](https://user-images.githubusercontent.com/70228714/195925723-76551842-7a41-41c5-a3d0-25070b4fc5f2.png)
-![Indeed App (2)](https://user-images.githubusercontent.com/70228714/195925740-ee255df3-126a-43aa-a9cd-a27bd19caedf.png)
-![Indeed App (1)](https://user-images.githubusercontent.com/70228714/195925752-ad8bd247-b707-4747-857e-215f3195f792.png)
 
+![LoginPage](https://user-images.githubusercontent.com/70228714/195926391-bf20482a-390b-41f9-a31f-42c7a512afb3.png)
+![HomePage](https://user-images.githubusercontent.com/70228714/195926429-457bcf78-939a-4bc8-b246-56e442151ed5.png)
+![FindJobs](https://user-images.githubusercontent.com/70228714/195926491-99f46d51-5c87-49c8-bbc9-5b6771f0725f.png)
+![CompanyReviews](https://user-images.githubusercontent.com/70228714/195926514-c4691d2e-93b7-4b4c-a96e-55e75b0109d8.png)
+![SalaryPage](https://user-images.githubusercontent.com/70228714/195926542-bb135309-25a1-4dca-9ad3-07eb1cdd3926.png)
