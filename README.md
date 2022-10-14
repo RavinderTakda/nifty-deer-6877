@@ -8,11 +8,19 @@ Indeed is an worldwide employment website for job listings. With Indeed, you can
 <li>Chakra UI</li>
 <li>Material UI</li>
 
-<h3>Take a look </h3>
+<h1>Take a look </h1>
 
-
+<h3>Login Page </h3>
 ![LoginPage](https://user-images.githubusercontent.com/70228714/195926391-bf20482a-390b-41f9-a31f-42c7a512afb3.png)
+
+<h3>Home Page </h3>
 ![HomePage](https://user-images.githubusercontent.com/70228714/195926429-457bcf78-939a-4bc8-b246-56e442151ed5.png)
+
+<h3>Find Job Page </h3>
 ![FindJobs](https://user-images.githubusercontent.com/70228714/195926491-99f46d51-5c87-49c8-bbc9-5b6771f0725f.png)
+
+<h3>Company Review Page </h3>
 ![CompanyReviews](https://user-images.githubusercontent.com/70228714/195926514-c4691d2e-93b7-4b4c-a96e-55e75b0109d8.png)
+
+<h3>Salary Page </h3>
 ![SalaryPage](https://user-images.githubusercontent.com/70228714/195926542-bb135309-25a1-4dca-9ad3-07eb1cdd3926.png)
