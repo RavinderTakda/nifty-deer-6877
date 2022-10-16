@@ -18,31 +18,45 @@ import { FaBell } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { Link,  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { LogOut } from "../Redux/Authentication/action";
+import { LogOut, setUser } from "../Redux/Authentication/action";
 import { SignupButton } from "./SignupButton";
-
+import { useEffect, useState } from "react";
 import * as types from "../Redux/Authentication/actionTypes"
+import { auth } from "../../Firebase";
+
 
 export const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {userDetails} = useSelector((state) => state.user);
+  const [email,setEmail]=useState("")
 
-  
+ 
+
+  useEffect(()=>{
+    auth.onAuthStateChanged((authUser)=>{
+      if(authUser){
+        dispatch(setUser(authUser));
+        setEmail(authUser.email)
+      }else{
+        dispatch(setUser(null));
+      }
+      
+
+    })
+  },[dispatch])
+
+ console.log(email)
+
 
 
   const signOutBtn = () => {
     dispatch(LogOut()).then((r) => {
       dispatch({ type: types.USER_LOGIN_FAILURE });
-      navigate("/");
+      //navigate("/login");
     });
   };
-
-
-
- 
-
-
+  
   return (
     <div>
       <Box m={5} p={1}>
@@ -82,17 +96,15 @@ export const Navbar = () => {
               <FaBell />
             </Box>
             <Box py={2}>
-              {userDetails?.email? <Menu>
+              {email? 
+                        
+              <Menu>
                 <MenuButton as={Button} >
                 <CgProfile/>
                 </MenuButton>
                 <MenuList>
                   <MenuGroup>
-
-                    <MenuItem>{userDetails?.email}</MenuItem>
-
-                    {/* <MenuItem>{currentUser.email}</MenuItem> */}
-
+                    <MenuItem>{email}</MenuItem>
                     <MenuItem>My jobs</MenuItem>
                     <MenuItem>My reviews</MenuItem>
                     <MenuDivider />

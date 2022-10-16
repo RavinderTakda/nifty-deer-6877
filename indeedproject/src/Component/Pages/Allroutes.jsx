@@ -22,6 +22,7 @@ export const Allroutes = () => {
         <Route path="/salary" element={<Salary />} />
         <Route path="/findjob" element={<Searchbox />} />
         <Route path="/" element={<HomePage />} />
+
         <Route path="/career/salaries/:id" element={<CompanyInfo />} />
         <Route
           path="/applyjob"
@@ -31,7 +32,7 @@ export const Allroutes = () => {
             </UserRoute>
           }
         />
-        </Routes>
+      </Routes>
     </div>
   );
 };

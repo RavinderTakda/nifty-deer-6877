@@ -18,9 +18,9 @@ import { FcGoogle } from "react-icons/fc";
 import { BsFacebook, BsApple } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, } from "react-redux";
-import { GoogleSignIn, login, passwordReset,  } from "../Redux/Authentication/action";
+import { GoogleSignIn, login  } from "../Redux/Authentication/action";
 import * as types from "../Redux/Authentication/actionTypes"
-
+import {Footer} from "../Pages/Footer"
 
 
 
@@ -118,7 +118,8 @@ const signInWithGoogle = async () => {
 };
 return (
   <div>
-    <Box bg={"#FFFAF0"}>
+    <Box >  
+      {/* bg={"#FFFAF0"} */}
          <Container  my="5vh" centerContent>
             
             <Link to={"/"}>
@@ -227,10 +228,7 @@ return (
             fontWeight={"bold"}
             rightIcon={<ImArrowRight2 />}
             onClick={HandleSubmit}
-            // disabled={submitButtonDisable}
-            
-            //   isLoading={state.isLoading ? "YES" : ""}
-            //   loadingText="Verifying Email address"
+          
           >
             Continue
           </Button>
@@ -240,6 +238,7 @@ return (
       </VStack>
     </Container>
     </Box>
+    <Footer/>
   </div>
 )
 }
