@@ -1,6 +1,8 @@
-#Indeed Clone
+<h1>Indeed Clone</h1>
+<br/>
 Indeed is an worldwide employment website for job listings. With Indeed, you can search millions of jobs online to find the next step in your career. With tools for job search, resumes, company reviews and more
-#Tech Stack
+<br/>
+<h1>Tech Stack</h1>
 <li>HTML</li>
 <li>CSS</li>
 <li>React JS</li>
