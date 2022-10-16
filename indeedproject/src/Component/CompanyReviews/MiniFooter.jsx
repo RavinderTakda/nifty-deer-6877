@@ -1,20 +1,12 @@
 import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
+import style from './MiniFooter.module.css'
 
 const MiniFooter = () => {
   return (
     <>
-      <Box
-        w="60%"
-        height="100px"
-        border="1px solid white"
-        m="auto"
-        mt="20"
-        bg="rgb(245,251,249)"
-      >
-        <Text textAlign="center" fontSize='20px' mt='20px'>Rate your recent company:</Text>
-      </Box>
-      <Box display="flex" ml="150px" mt={10}>
+    
+      <Box display="flex" ml="150px" mt={10} className={style.maim_footer}>
         <Text>Career Advice</Text>
         <Text mr={5}>Browse Jobs</Text>
         <Text mr={5}> Browse Companies</Text>
@@ -25,21 +17,21 @@ const MiniFooter = () => {
         <Text mr={5}>About</Text>
         <Text mr={5}>Help Center ESG at Indeed</Text>
       </Box>
-      <Text ml="150px">Guidelines for Safe Job Search</Text>
+      <Text ml="150px" className={style.guide_text}>Guidelines for Safe Job Search</Text>
 
       <Box ml={20} mt={10} w="60%" mb={10}>
-        <SimpleGrid columns={[1, 2, 4]} spacing={5} fontSize={15}>
+        <SimpleGrid columns={[1, 2, 4]} spacing={5} fontSize={15} className={style.footer_bottom}>
           <Box>
-            <Text ml="100px">© 2022 Indeed</Text>
+            <Text ml="100px" className={style.text1}>© 2022 Indeed</Text>
           </Box>
           <Box>
-            <Text>Accessibility at Indeed Privacy </Text>
+            <Text className={style.text2}>Accessibility at Indeed Privacy </Text>
           </Box>
           <Box>
-            <Text> Center Cookies </Text>
+            <Text className={style.text3}> Center Cookies </Text>
           </Box>
           <Box>
-            <Text ml="-100px">Privacy Center</Text>
+            <Text ml="-100px" className={style.text4}>Privacy Center</Text>
           </Box>
         </SimpleGrid>
       </Box>

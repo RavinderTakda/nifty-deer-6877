@@ -27,7 +27,7 @@ import {
   export const getTopPayingComp = (payload) => (dispatch) => {
     dispatch(compRequest());
     return axios
-      .get("http://json-server-mocker-robin.herokuapp.com/tpcompanies")
+      .get("https://dry-atoll-17355.herokuapp.com/tpcompanies")
       .then((response) => {
         dispatch(compSuccess(response.data));
       })

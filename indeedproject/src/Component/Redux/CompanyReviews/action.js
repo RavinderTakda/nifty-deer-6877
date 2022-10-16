@@ -29,7 +29,7 @@ export const companyFailure = (error) => {
 export const getCompanyReviews = (params) => (dispatch) => {
   dispatch(companyRequest());
   return axios
-    .get("https://indeed-mock-server.herokuapp.com/companies",params)
+    .get("https://dry-atoll-17355.herokuapp.com/companies",params)
     .then((response) => {
       dispatch(companySuccess(response.data));
     })

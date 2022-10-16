@@ -1,0 +1,57 @@
+.about {
+  display: flex;
+  gap: 30px;
+  width: 70%;
+  height: 400px;
+}
+.img_ceo {
+  width: 100%;
+}
+.about_name {
+  width: 100%;
+  height: 400px;
+}
+.about_name1 {
+  display: flex;
+
+  width: 100%;
+  height: 170px;
+}
+.about_name2 {
+  display: flex;
+
+  width: 100%;
+  height: 170px;
+}
+.name_Box1{
+  background-color:rgb(20, 105, 122);
+  color: rgb(246, 235, 235);
+}
+.name_Box1:hover{
+  background-color:rgb(82, 160, 176);
+}
+.name_Box2{
+  background-color:rgb(20, 105, 122);
+  color: rgb(246, 235, 235);
+}
+.name_Box2:hover{
+  background-color:rgb(82, 160, 176);
+}
+
+
+@media only screen and (min-width: 0) and (max-width: 400px) {
+  .about {
+    width: 100% !important;
+  }
+  .img_ceo {
+    width: 100% !important;
+    margin: auto !important;
+  }
+  .name_Box1 {
+    width: 100% !important;
+  }
+  .name_Box2 {
+    width: 100% !important;
+  }
+ 
+}

@@ -1,6 +1,7 @@
 
 import axios from "axios";
-import { JOBS_SEARCH_FAILURE, JOBS_SEARCH_REQUEST, JOBS_SEARCH_SUCCESS, SINGLE_JOBS_SEARCH_FAILURE, SINGLE_JOBS_SEARCH_REQUEST, SINGLE_JOBS_SEARCH_SUCCESS } from "./actiontypes";
+import { useDispatch } from "react-redux";
+import { JOBS_SEARCH_FAILURE, JOBS_SEARCH_REQUEST, JOBS_SEARCH_SUCCESS, LOADING_FAILURE,LOADING_REQUEST, lOADING_SUCESS, SINGLE_JOBS_SEARCH_FAILURE, SINGLE_JOBS_SEARCH_REQUEST, SINGLE_JOBS_SEARCH_SUCCESS } from "./actiontypes";
 
 
 
@@ -50,6 +51,8 @@ export const singlejobsearchFailure = (err) => {
 
 
 
+
+
 export const SearchTopPayingJobs = (params) => (dispatch) => {
     // console.log('searchbycity')
   dispatch(jobsearchRequest());
@@ -69,7 +72,7 @@ export const SearchTopPayingJobs = (params) => (dispatch) => {
 
 
 export const SingleFullDataJobs = (params) => (dispatch) => {
-  console.log('searchbycity')
+  // console.log('searchbycity')
 dispatch(singlejobsearchRequest());
 return axios
   .get("https://json-server-999.herokuapp.com/jobs",params)
@@ -83,3 +86,13 @@ return axios
   });
 };
 
+
+
+export const LoadinggetData=(data)=>(dispatch)=>{
+console.log("laoding",data)
+
+  dispatch({type:LOADING_REQUEST})
+  dispatch({type:lOADING_SUCESS,payload:data})
+  dispatch({type:LOADING_FAILURE})
+}
+ 
