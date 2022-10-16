@@ -64,7 +64,7 @@ export const HomePage = () => {
       <Navbar />
       <InputSearch />
 
-      <Container maxW="container.lg" my={5} h={"43vh"} >
+      <Container maxW="container.lg" my={5}   h={"43vh"} >
         <VStack>
           <Heading fontSize={20}>Popular Searches</Heading>
           <Flex flexWrap={"wrap"} justifyContent="center" gap={4} p={5}>

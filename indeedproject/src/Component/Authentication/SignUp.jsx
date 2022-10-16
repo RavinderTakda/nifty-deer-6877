@@ -113,7 +113,8 @@ export const SignUpUser = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#FFFAF0" }}>
+    <div >
+      {/* style={{ backgroundColor: "#FFFAF0" }} */}
       <Box>
         <Container my="5vh" centerContent>
           <Image

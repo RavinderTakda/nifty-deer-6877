@@ -53,15 +53,10 @@ export const Navbar = () => {
   const signOutBtn = () => {
     dispatch(LogOut()).then((r) => {
       dispatch({ type: types.USER_LOGIN_FAILURE });
-      navigate("/");
+      //navigate("/login");
     });
   };
-
-
-
- 
-
-
+  
   return (
     <div>
       <Box m={5} p={1}>
